@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hikepass - Informasi Pendakian Gunung</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="logo">
+          <img src="assets/logo.png" alt="Hikepass Logo" class="logo-img" />
+        </div>
+        <nav class="nav">
+          <img src="assets/navbar.png" alt="Navigation" class="nav-img" />
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h1 class="hero-title">Informasi Pendakian Gunung</h1>
+        <p class="hero-subtitle">
+          Kelola data informasi pendakian gunung di Indonesia
+        </p>
+      </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+      <div class="container">
+        <div class="search-card">
+          <div class="search-box">
+            <input
+              type="text"
+              placeholder="Cari nama gunung atau lokasi..."
+              class="search-input"
+            />
+          </div>
+          <button class="btn-add">+ Tambah Data Informasi</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mountains Grid -->
+    <section class="mountains-section">
+      <div class="container">
+        <div class="mountains-grid">
+          <!-- Gunung Malabar -->
+          <div class="mountain-card">
+            <div
+              class="mountain-image"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500');
+              "
+            ></div>
+            <div class="mountain-content">
+              <h3 class="mountain-title">Gunung Malabar</h3>
+              <div class="mountain-info">
+                <p>🏔️ 12 Km, 7 Pos</p>
+                <p>🏕️ Tersedia Camping</p>
+                <p>💧 Tersedia Mata Air</p>
+                <p>✅ Pemula</p>
+              </div>
+              <div class="mountain-footer">
+                <div class="price">
+                  Biaya <span class="price-tag">Rp. 30.000</span>
+                </div>
+                <div class="actions">
+                  <button class="btn-edit">✏️ Edit</button>
+                  <button class="btn-delete">🗑️ Hapus</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gunung Putang -->
+          <div class="mountain-card">
+            <div
+              class="mountain-image"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=500');
+              "
+            ></div>
+            <div class="mountain-content">
+              <h3 class="mountain-title">Gunung Putang</h3>
+              <div class="mountain-info">
+                <p>🏔️ 12 Km, 5 Pos</p>
+                <p>⛔ Tidak Tersedia Camping</p>
+                <p>💧 Tersedia Mata Air</p>
+                <p>✅ Pemula</p>
+              </div>
+              <div class="mountain-footer">
+                <div class="price">
+                  Biaya <span class="price-tag">Rp. 30.000</span>
+                </div>
+                <div class="actions">
+                  <button class="btn-edit">✏️ Edit</button>
+                  <button class="btn-delete">🗑️ Hapus</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gunung Cikuray -->
+          <div class="mountain-card">
+            <div
+              class="mountain-image"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500');
+              "
+            ></div>
+            <div class="mountain-content">
+              <h3 class="mountain-title">Gunung Cikuray</h3>
+              <div class="mountain-info">
+                <p>🏔️ 9 Km, 6 Pos</p>
+                <p>🏕️ Tersedia Camping</p>
+                <p>💧 Tersedia Mata Air</p>
+                <p>✅ Pemula</p>
+              </div>
+              <div class="mountain-footer">
+                <div class="price">
+                  Biaya <span class="price-tag">Rp. 30.000</span>
+                </div>
+                <div class="actions">
+                  <button class="btn-edit">✏️ Edit</button>
+                  <button class="btn-delete">🗑️ Hapus</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
