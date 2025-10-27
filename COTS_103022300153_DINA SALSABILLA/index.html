@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paket Wisata Hikepass</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="assets/logo.png" alt="Logo">
+                <span>Hikepass</span>
+            </div>
+            <nav>
+                <a href="#" id="paketWisataBtn">
+                    <img src="assets/tiket.png" alt="Paket Wisata">
+                    <span>Paket Wisata</span>
+                </a>
+                <a href="#" id="informasiBtn">
+                    <img src="assets/informasi.png" alt="Informasi">
+                    <span>Informasi</span>
+                </a>
+                <a href="#" id="profilBtn">
+                    <img src="assets/profil.png" alt="Profil">
+                    <span>Profil</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <img src="assets/gambar-1.jpg" alt="Hero">
+        <div class="hero-content">
+            <h1>Paket Wisata</h1>
+            <p>Kelola paket wisata menarik!</p>
+            <button id="tambahBtn">
+                <img src="assets/tambah.png" alt="Tambah">
+                <span>Tambah</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Cards -->
+    <section class="cards">
+        <div class="container">
+            <!-- Card 1 -->
+            <div class="card" id="card1">
+                <img src="assets/gambar-2.jpg" alt="Malabar Green Leisure">
+                <div class="card-body">
+                    <h3>Malabar Green Leisure</h3>
+                    <p>Paket ini cocok untuk kamu yang ingin melepas penat dari rutinitas kampus/sehari-hari, sambil menikmati alam hijau di kawasan segar di kawasan Gunung Malabar (sekitar Bandung)</p>
+                    <p class="detail">Hari 1: Trekking - Games Alam - Api Unggun</p>
+                    <div class="card-footer">
+                        <div class="info">
+                            <div>
+                                <img src="assets/durasi.png" alt="Durasi">
+                                <span>1 hari</span>
+                            </div>
+                            <div>
+                                <img src="assets/harga.png" alt="Harga">
+                                <span>Rp.30.000</span>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <button class="edit" onclick="editCard(1)">
+                                <img src="assets/edit.png" alt="Edit">
+                                <span>Edit</span>
+                            </button>
+                            <button class="hapus" onclick="hapusCard(1)">
+                                <img src="assets/hapus.png" alt="Hapus">
+                                <span>Hapus</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card" id="card2">
+                <img src="assets/gambar-3.jpg" alt="Malabar Summit Adventure">
+                <div class="card-body">
+                    <h3>Malabar Summit Adventure</h3>
+                    <p>Paket ini cocok untuk kamu yang ingin menantang diri, mencapai puncak Gunung Malabar, dan menikmati sunrise spektakuler di ketinggian</p>
+                    <p class="detail">Hari 1: Briefing safety – Pendakian menuju pos perkemahan</p>
+                    <p class="detail">Hari 2: Summit attack dini hari – Menikmati sunrise di puncak</p>
+                    <div class="card-footer">
+                        <div class="info">
+                            <div>
+                                <img src="assets/durasi.png" alt="Durasi">
+                                <span>2 hari</span>
+                            </div>
+                            <div>
+                                <img src="assets/harga.png" alt="Harga">
+                                <span>Rp.60.000</span>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <button class="edit" onclick="editCard(2)">
+                                <img src="assets/edit.png" alt="Edit">
+                                <span>Edit</span>
+                            </button>
+                            <button class="hapus" onclick="hapusCard(2)">
+                                <img src="assets/hapus.png" alt="Hapus">
+                                <span>Hapus</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

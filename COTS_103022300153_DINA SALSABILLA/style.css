@@ -1,0 +1,247 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: white;
+    font-family: system-ui;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background:#093731;
+    padding: 10px 0px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    width: 35px;
+    height: 35px;
+}
+
+.logo span {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 10px;
+}
+
+nav a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+nav a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+nav img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Hero */
+.hero {
+    position: relative;
+    height: 250px;
+    margin-top: 60px;
+    overflow: hidden;
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center bottom;
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 1;
+}
+
+.hero-content {
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 28px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.hero button {
+    background: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+}
+
+.hero button:hover {
+    opacity: 0.9;
+}
+
+.hero button img {
+    width: 18px;
+    height: 18px;
+}
+
+/* Cards */
+.cards {
+    padding: 40px 0;
+}
+
+.cards .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card > img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card h3 {
+    font-size: 20px;
+    color: #093731;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 14px;
+    color: #093731;
+    margin-bottom: 10px;
+}
+
+.card .detail {
+    font-size: 14px;
+    color: #093731;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.info {
+    display: flex;
+    gap: 10px;
+}
+
+.info div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+}
+
+.info img {
+    width: 16px;
+    height: 16px;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.actions button {
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: white;
+}
+
+.actions .edit {
+    background: #093731;
+}
+
+.actions .hapus {
+    background: red;
+}
+
+.actions button:hover {
+    opacity: 0.8;
+}
+
+.actions img {
+    width: 16px;
+    height: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cards .container {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero {
+        height: 250px;
+    }
+}
