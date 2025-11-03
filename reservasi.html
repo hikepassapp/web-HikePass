@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservasi</title>
+
+    <!-- Modular CSS -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/component.css">
+    <link rel="stylesheet" href="css/page-reservasi.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo">
+            <img src="assets/logoHikepass.svg" alt="Logo HikePass">
+            <h2>HikePass</h2>
+        </div>
+
+        <nav class="navbar-menu">
+            <a href="home.html">Home</a>
+            <a href="reservasi.html" class="active">Reservasi</a>
+            <a href="tiket.html">Tiket Saya</a>
+        </nav>
+
+        <div class="logo">
+            <p>Hai, Yanto</p>
+            <img src="assets/avatarUser.png" alt="User Avatar">
+        </div>
+    </header>
+
+    <!-- HERO SEARCH SECTION -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1 class="hero-title">Reservasi Pendakian</h1>
+            <div class="search-rsv-container">
+                <input type="text" placeholder="Cari gunung tujuan...">
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="section">
+        <div class="container">
+            <!-- CARD GUNUNG -->
+            <div class="mountain-card">
+                <img src="assets/GunungGuntur.jpg" alt="Gunung">
+                <div class="mountain-details">
+                    <h3 class="mountain-card__title">Gunung Gede Pangrango</h3>
+                    <ul class="mountain-card__info">
+                        <li>Lokasi : Jawa Barat</li>
+                        <li>Kuota : 150 Pendaki</li>
+                        <li>Jalur : Cibodas</li>
+                    </ul>
+                    <button class="btnReservasi">Reservasi Sekarang</button>
+                </div>
+            </div>
+
+            <div class="mountain-card">
+                <img src="assets/GunungMalabar.jpg" alt="Gunung">
+                <div class="mountain-details">
+                    <h3 class="mountain-card__title">Gunung Semeru</h3>
+                    <ul class="mountain-card__info">
+                        <li>Lokasi : Jawa Timur</li>
+                        <li>Kuota : 80 Pendaki</li>
+                        <li>Jalur : Ranu Pani</li>
+                    </ul>
+                    <button class="btnReservasi" id="reservasi-semeru-btn">Reservasi Sekarang</button>
+                </div>
+            </div>
+
+            <div class="mountain-card">
+                <img src="assets/GunungCikuray.jpg" alt="Gunung">
+                <div class="mountain-details">
+                    <h3 class="mountain-card__title">Gunung Cikuray</h3>
+                    <ul class="mountain-card__info">
+                        <li>Lokasi : Jawa Barat</li>
+                        <li>Kuota : 80 Pendaki</li>
+                        <li>Jalur : Tapak-Gerot</li>
+                    </ul>
+                    <button class="btnReservasi">Reservasi Sekarang</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="script/reservasi-script.js"></script>
+</body>
+</html>
