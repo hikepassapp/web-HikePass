@@ -1,5 +1,5 @@
 // ===================================================
-// HANDLE TAB SWITCHING
+// handle tab switching
 // ===================================================
 const tabs = document.querySelectorAll(".tab");
 const contents = document.querySelectorAll(".tab-content");
@@ -16,7 +16,7 @@ tabs.forEach(tab => {
 });
 
 // ===================================================
-// LOAD DATA USER DARI LOCALSTORAGE
+// load data user dari localstorage
 // ===================================================
 const storedUser = JSON.parse(localStorage.getItem("userData"));
 
@@ -33,13 +33,13 @@ if (storedUser) {
 }
 
 // ===================================================
-// DISABLE INPUT RADIO (JENIS KELAMIN) SAAT AWAL
+// disable input radio (jenis kelamin) saat awal
 // ===================================================
 const genderInputs = document.querySelectorAll('input[name="gender"]');
 genderInputs.forEach(input => (input.disabled = true));
 
 // ===================================================
-// HANDLE TOMBOL EDIT UNTUK MENGAKTIFKAN INPUT
+// handle tombol edit untuk mengaktifkan input
 // ===================================================
 const editBtn = document.getElementById("editProfileBtn");
 let isEditing = false;
@@ -54,5 +54,16 @@ if (editBtn) {
     } else {
       alert("Mode edit dinonaktifkan.");
     }
+  });
+}
+
+// ===================================================
+// handle navigasi ke halaman profile
+// ===================================================
+const profileBtn = document.getElementById("profileBtn");
+
+if (profileBtn) {
+  profileBtn.addEventListener("click", () => {
+    window.location.href = "profile.html";
   });
 }
