@@ -33,3 +33,16 @@
 .btn-delete:hover {
     background: #c9302c;
 }
+.filter-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.filter-bar input,
+.filter-bar select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
