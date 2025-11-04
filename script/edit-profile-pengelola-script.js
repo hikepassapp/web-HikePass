@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     cancelBtn.addEventListener("click", (e) => {
       e.preventDefault();
       if (confirm("Batalkan perubahan dan kembali ke profil?")) {
-        window.location.href = "profile.html";
+        window.location.href = "profile-pengelola.html";
       }
     });
   }
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("userData", JSON.stringify(updatedUser));
 
       alert("Data profil berhasil disimpan!");
-      window.location.href = "profile.html";
+      window.location.href = "profile-pengelola.html";
     });
   }
 });
