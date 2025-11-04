@@ -1,8 +1,8 @@
 // ========================================
-// TIKET SAYA SCRIPT - NATIVE JSON VERSION
+// TIKET SAYA SCRIPT - API VERSION
 // ========================================
 
-const TICKETS_JSON_PATH = 'data-tiket.json';
+const API_BASE_URL = 'https://6906c98ab1879c890ed807e9.mockapi.io/api/tiketSaya';
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log('🚀 Initializing Tiket Saya page...');
@@ -15,53 +15,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function initTiketSaya() {
     showLoading();
-    loadTicketsFromJSON();
+    loadTicketsFromAPI();
     setupFilterButtons();
 }
 
 // ========================================
-// LOAD TICKETS FROM JSON
+// LOAD TICKETS FROM API
 // ========================================
 
-async function loadTicketsFromJSON() {
+async function loadTicketsFromAPI() {
     try {
-        console.log('📡 Loading tickets from JSON...');
+        console.log('📡 Loading tickets from API...');
 
-        let allTickets = [];
+        const response = await fetch(`${API_BASE_URL}/tiket`);
+        console.log('📥 Fetch response status:', response.status);
 
-        // Load dari JSON file
-        try {
-            const response = await fetch(TICKETS_JSON_PATH);
-            console.log('📥 Fetch response status:', response.status);
-
-            if (response.ok) {
-                const jsonTickets = await response.json();
-                console.log('✅ JSON data loaded:', jsonTickets);
-
-                if (Array.isArray(jsonTickets) && jsonTickets.length > 0) {
-                    allTickets = [...jsonTickets];
-                    console.log('✅ Loaded from JSON file:', jsonTickets.length, 'tickets');
-                } else {
-                    console.warn('⚠️ JSON file is empty or invalid format');
-                }
-            } else {
-                console.warn('⚠️ Could not load JSON file (status:', response.status, ')');
-            }
-        } catch (error) {
-            console.error('⚠️ Error fetching JSON:', error);
-            console.log('⚠️ Using localStorage only');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        // Load dari localStorage
-        const localTickets = getTicketsFromLocalStorage();
-        console.log('📦 localStorage tickets:', localTickets);
-
-        if (localTickets.length > 0) {
-            allTickets = [...allTickets, ...localTickets];
-            console.log('✅ Loaded from localStorage:', localTickets.length, 'tickets');
-        }
-
+        const allTickets = await response.json();
+        console.log('✅ API data loaded:', allTickets);
         console.log('📊 Total tickets:', allTickets.length);
+
+        // Sort tickets by createdAt date (newest first)
+        allTickets.sort((a, b) => {
+            const dateA = new Date(a.createdAt);
+            const dateB = new Date(b.createdAt);
+            return dateB - dateA; // Descending order (newest first)
+        });
+
         if (allTickets.length > 0) {
             console.table(allTickets);
         }
@@ -72,7 +55,7 @@ async function loadTicketsFromJSON() {
             console.log('❌ No tickets found, showing empty state');
             showEmptyState();
         } else {
-            console.log('✅ Rendering', allTickets.length, 'tickets');
+            console.log('✅ Rendering', allTickets.length, 'tickets (sorted by newest)');
             renderTickets(allTickets);
         }
 
@@ -84,34 +67,77 @@ async function loadTicketsFromJSON() {
 }
 
 // ========================================
-// HELPER FUNCTIONS - LOCAL STORAGE
+// HELPER FUNCTIONS - API
 // ========================================
 
-function getTicketsFromLocalStorage() {
-    const stored = localStorage.getItem('hikingTickets');
-    return stored ? JSON.parse(stored) : [];
-}
-
-function saveTicketsToLocalStorage(tickets) {
-    localStorage.setItem('hikingTickets', JSON.stringify(tickets));
-}
-
-function updateTicketInStorage(ticketId, updates) {
-    const tickets = getTicketsFromLocalStorage();
-    const index = tickets.findIndex(t => t.id === ticketId);
-
-    if (index !== -1) {
-        tickets[index] = { ...tickets[index], ...updates, updatedAt: new Date().toISOString() };
-        saveTicketsToLocalStorage(tickets);
-        return tickets[index];
+async function getTicketsFromAPI() {
+    try {
+        const response = await fetch(`${API_BASE_URL}/tiket`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching tickets:', error);
+        return [];
     }
-
-    return null;
 }
 
-function getTicketById(ticketId) {
-    const tickets = getTicketsFromLocalStorage();
-    return tickets.find(t => t.id === ticketId);
+async function updateTicketInAPI(ticketId, updates) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/tiket/${ticketId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                ...updates,
+                updatedAt: new Date().toISOString()
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const updatedTicket = await response.json();
+        console.log('✅ Ticket updated in API:', updatedTicket);
+        return updatedTicket;
+    } catch (error) {
+        console.error('❌ Error updating ticket:', error);
+        return null;
+    }
+}
+
+async function getTicketById(ticketId) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/tiket/${ticketId}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching ticket:', error);
+        return null;
+    }
+}
+
+async function deleteTicketFromAPI(ticketId) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/tiket/${ticketId}`, {
+            method: 'DELETE'
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        console.log('✅ Ticket deleted from API:', ticketId);
+        return true;
+    } catch (error) {
+        console.error('❌ Error deleting ticket:', error);
+        return false;
+    }
 }
 
 // ========================================
@@ -280,9 +306,9 @@ function handlePayment(ticketId) {
     window.location.href = 'pembayaran.html';
 }
 
-function handleCancel(ticketId) {
+async function handleCancel(ticketId) {
     if (confirm('Apakah Anda yakin ingin membatalkan tiket ini?')) {
-        const updated = updateTicketInStorage(ticketId, {
+        const updated = await updateTicketInAPI(ticketId, {
             status: 'dibatalkan',
             paymentStatus: 'dibatalkan'
         });
@@ -304,13 +330,13 @@ function handleReview(ticketId) {
 // SHOW TICKET DETAIL
 // ========================================
 
-function showTicketDetail(ticketId) {
+async function showTicketDetail(ticketId) {
     console.log('Showing detail for ticket:', ticketId);
 
     showDetailModal('loading');
 
-    setTimeout(() => {
-        const ticket = getTicketById(ticketId);
+    setTimeout(async () => {
+        const ticket = await getTicketById(ticketId);
 
         if (ticket) {
             showDetailModal('success', ticket);
@@ -511,7 +537,7 @@ function setupFilterButtons() {
 
     filterButtons.forEach(btn => {
         btn.addEventListener('click', async () => {
-            console.log(' Filter clicked:', btn.getAttribute('data-status'));
+            console.log('🔍 Filter clicked:', btn.getAttribute('data-status'));
 
             filterButtons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
@@ -519,20 +545,14 @@ function setupFilterButtons() {
             const filterStatus = btn.getAttribute('data-status');
             showLoading();
 
-            const allTickets = [];
+            const allTickets = await getTicketsFromAPI();
 
-            try {
-                const response = await fetch(TICKETS_JSON_PATH);
-                if (response.ok) {
-                    const jsonTickets = await response.json();
-                    allTickets.push(...jsonTickets);
-                }
-            } catch (error) {
-                console.warn('Using localStorage only');
-            }
-
-            const localTickets = getTicketsFromLocalStorage();
-            allTickets.push(...localTickets);
+            // Sort tickets by createdAt date (newest first)
+            allTickets.sort((a, b) => {
+                const dateA = new Date(a.createdAt);
+                const dateB = new Date(b.createdAt);
+                return dateB - dateA;
+            });
 
             hideLoading();
             renderTickets(allTickets, filterStatus);
@@ -620,5 +640,5 @@ function formatDateTime(dateString) {
     }
 }
 
-console.log('%c🎫 Tiket Saya Page - LOADED (Native JSON)', 'font-size: 16px; font-weight: bold; color: #0c665c;');
-console.log('%cData Source: JSON File + localStorage', 'font-weight: bold;');
+console.log('%c🎫 Tiket Saya Page - LOADED (API Version)', 'font-size: 16px; font-weight: bold; color: #0c665c;');
+console.log('%cData Source: MockAPI', 'font-weight: bold;');
