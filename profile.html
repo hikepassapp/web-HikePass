@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HikePass - Profil</title>
 
-  <!-- Base Styles -->
+  <!-- file css utama -->
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/layout.css" />
   <link rel="stylesheet" href="css/component.css" />
@@ -14,10 +14,10 @@
 </head>
 
 <body>
-  <!-- NAVBAR -->
+  <!-- navbar -->
   <header class="navbar">
     <div class="logo">
-      <img src="assets/logoHikepass.svg" alt="Logo HikePass">
+      <img src="assets/logoHikepass.svg" alt="Logo HikePass" />
       <h2>HikePass</h2>
     </div>
 
@@ -28,78 +28,88 @@
     </nav>
 
     <div class="logo">
-      <p>Hai, Dhea</p>
-      <img src="assets/avatarUSer.png" alt="User Avatar">
+      <p id="greeting">Hai, Yanto</p>
+      <img src="assets/avatarUser.png" alt="User Avatar" />
     </div>
   </header>
 
-  <!-- BANNER -->
+  <!-- banner -->
   <section class="banner-section">
-    <img src="assets/imgBanner.jpg" alt="Banner" class="banner-img">
+    <img src="assets/imgBackground.jpg" alt="Banner" class="banner-img" />
 
-    <!-- Foto Profil -->
+    <!-- foto profil -->
     <div class="profile-photo-container">
-      <img src="assets/profile.png" alt="Foto Profil" class="profile-photo">
-      <img src="assets/edit_foto.png" alt="Edit Foto" class="edit-photo-icon">
+      <div class="profile-circle">
+        <img src="assets/profile.png" alt="Foto Profil" class="profile-photo" />
+        <div class="edit-photo-icon">
+          <img src="assets/edit_foto.png" alt="Edit Foto" />
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- TAB MENU -->
+  <!-- tab menu -->
   <div class="profile-tabs">
-    <button class="tab active">Informasi Profile</button>
-    <button class="tab">Ubah Password</button>
-    <button class="tab">Pengaturan Privasi</button>
+    <button class="tab active" data-tab="tab-profile">Informasi Profile</button>
+    <button class="tab" onclick="window.location.href='ubah-password.html'">Ubah Password</button>
+    <button class="tab" onclick="window.location.href='pengaturan-privasi.html'">Pengaturan Privasi</button>
   </div>
 
-  <!-- INFORMASI PROFILE -->
-  <section class="profile-info">
+  <!-- konten informasi profil -->
+  <section class="profile-info" id="tab-profile">
     <div class="profile-card">
-      <div class="edit-icon">
-        <img src="assets/edit.png" alt="Edit Icon">
+      <div class="edit-icon" id="editProfileBtn">
+        <img src="assets/edit.png" alt="Edit Icon" />
       </div>
 
       <div class="info-grid">
         <div>
           <p class="label">Username</p>
-          <p class="value">dheani209</p>
+          <p class="value" id="usernameValue">yanto123321</p>
         </div>
 
         <div>
           <p class="label">Nama Lengkap</p>
-          <p class="value">-</p>
+          <p class="value" id="fullnameValue">Yanto</p>
         </div>
 
         <div>
           <p class="label">Alamat</p>
-          <p class="value">-</p>
+          <p class="value" id="addressValue">-</p>
         </div>
 
         <div>
           <p class="label">Email</p>
-          <p class="value">dhea@gmail.com</p>
+          <p class="value" id="emailValue">yanto@gmail.com</p>
         </div>
 
         <div>
           <p class="label">Usia</p>
-          <p class="value">-</p>
+          <p class="value" id="ageValue">-</p>
         </div>
 
         <div>
           <p class="label">NIK</p>
-          <p class="value">-</p>
+          <p class="value" id="nikValue">-</p>
         </div>
 
         <div>
           <p class="label">Jenis Kelamin</p>
           <div class="radio-group">
-            <label><input type="radio" name="gender"> Laki-laki</label>
-            <label><input type="radio" name="gender" checked> Perempuan</label>
+            <label>
+              <input type="radio" name="gender" value="Laki-laki" disabled />
+              Laki-laki
+            </label>
+            <label>
+              <input type="radio" name="gender" value="Perempuan" disabled checked />
+              Perempuan
+            </label>
           </div>
         </div>
 
         <div>
           <p class="label">No Telepon</p>
-          <p class="value">-</p>
+          <p class="value" id="phoneValue">-</p>
         </div>
       </div>
     </div>

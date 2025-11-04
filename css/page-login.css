@@ -1,9 +1,11 @@
+/* halaman login utama */
 .login-page {
   display: flex;
   height: 100vh;
   width: 100%;
 }
 
+/* judul form login dan register */
 .form-title {
   font-size: 28px;
   font-weight: 700;
@@ -12,6 +14,7 @@
   padding: 20px;
 }
 
+/* bagian kiri halaman login */
 .split-left {
   flex: 1;
   background-color: #ffffff;
@@ -26,12 +29,13 @@
   max-width: 400px;
 }
 
-/* Input */
+/* grup input */
 .input-group {
   position: relative;
   margin-bottom: 18px;
 }
 
+/* style input teks */
 .input-group input {
   width: 100%;
   padding: 12px 15px;
@@ -45,6 +49,7 @@
   color: #aaa;
 }
 
+/* grup khusus untuk input password */
 .password-group {
   position: relative;
 }
@@ -58,6 +63,7 @@
   font-size: 14px;
 }
 
+/* ikon toggle password */
 .toggle-password {
   position: absolute;
   right: 12px;
@@ -74,16 +80,7 @@
   opacity: 1;
 }
 
-.forgot {
-  text-align: left;
-  font-size: 13px;
-  font-weight: 600;
-  color: #083c35;
-  margin-top: 10px;
-  margin-bottom: 25px;
-}
-
-/* Tombol SIGN IN */
+/* tombol sign in */
 .signin-btn {
   background-color: #0f7a4a;
   color: #fff;
@@ -99,7 +96,7 @@
   background-color: #0d6b40;
 }
 
-/* Divider */
+/* pembatas antara sign in dan register */
 .divider {
   display: flex;
   align-items: center;
@@ -116,7 +113,7 @@
   margin: 0 10px;
 }
 
-/* Tombol SIGN UP */
+/* tombol register putih */
 .white-btn {
   background-color: #ffffff;
   color: #0f7a4a;
@@ -133,6 +130,7 @@
   color: white;
 }
 
+/* bagian kanan halaman login */
 .split-right {
   flex: 1;
   background-color: #083c35;

@@ -1,4 +1,4 @@
-// toggle show/hide password
+// toggle show hide password
 const togglePassword = document.getElementById('togglePassword');
 const passwordInput = document.getElementById('password');
 
@@ -10,7 +10,7 @@ if (togglePassword && passwordInput) {
     });
 }
 
-// navigasi tombol login/register
+// navigasi tombol login register
 const signinBtn = document.getElementById("signin-btn");
 const daftarBtn = document.getElementById("daftar-btn");
 const showRegister = document.getElementById("showRegister");
@@ -18,7 +18,7 @@ const showLogin = document.getElementById("showLogin");
 const signInForm = document.getElementById("signInForm");
 const registerForm = document.getElementById("registerForm");
 
-// tombol sign in: masuk ke home/dashboard
+// tombol sign in masuk ke home dashboard
 if (signinBtn) {
     signinBtn.addEventListener("click", () => {
         const emailInput = document.querySelector('#signInForm input[type="email"]');
@@ -33,7 +33,7 @@ if (signinBtn) {
         }
 
         // kondisi login sederhana
-        if (email === "dhea@gmail.com" && password === "dhea123") {
+        if (email === "yanto@gmail.com" && password === "yanto123") {
             alert("Login berhasil! Selamat datang Admin.");
             window.location.href = "home.html"; 
         } else {
@@ -42,7 +42,7 @@ if (signinBtn) {
     });
 }
 
-// tombol daftar -> validasi -> dashboard
+// tombol daftar validasi lalu masuk ke dashboard
 if (daftarBtn) {
     daftarBtn.addEventListener("click", () => {
         const nama = document.getElementById("namaLengkap").value.trim();
@@ -60,12 +60,12 @@ if (daftarBtn) {
             return;
         }
 
-        // jika valid, diarahkan ke dashboard
+        // jika valid diarahkan ke dashboard
         window.location.href = "home.html";
     });
 }
 
-// toggle form sign in <-> register
+// toggle form sign in dan register
 if (showRegister && showLogin) {
     showRegister.addEventListener("click", () => {
         signInForm.style.display = "none";
@@ -78,7 +78,7 @@ if (showRegister && showLogin) {
     });
 }
 
-// tombol menu tambahan (opsional)
+// tombol menu tambahan opsional
 const userBtn = document.getElementById("userBtn");
 const reservasiBtn = document.getElementById("reservasi-btn");
 const rsvSemeruBtn = document.getElementById("reservasi-semeru-btn");
@@ -103,7 +103,7 @@ if (rsvSemeruBtn) {
 
 // tombol menuju halaman reservasi
 function pindahKeReservasi() {
-    console.log("Memindahkan ke halaman reservasi...");
+    console.log("memindahkan ke halaman reservasi...");
     window.location.href = "reservasi.html";
 }
 
