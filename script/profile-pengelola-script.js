@@ -1,76 +1,50 @@
 document.addEventListener("DOMContentLoaded", () => {
-  localStorage.removeItem("userData");
+  // ambil tombol edit profil dan logout
+  const editBtn = document.getElementById("editProfileBtn");
+  const logoutTab = document.getElementById("logoutTab");
 
-  const form = document.getElementById("editProfileForm");
-  const cancelBtn = document.getElementById("cancelBtn");
-
-  // mengambil data user dari localstorage
-  const storedUser = JSON.parse(localStorage.getItem("userData")) || {};
-
-  // helper untuk mengisi nilai input
-  const setValue = (id, value) => {
-    const el = document.getElementById(id);
-    if (el) el.value = value || "";
-  };
-
-  // mengisi nilai awal ke input form
-  setValue("usernameEdit", storedUser.username || "thanos001");
-  setValue("emailEdit", storedUser.email || "thanos@gmail.com");
-  setValue("namaEdit", storedUser.nama || "Thanos");
-  setValue("usiaEdit", storedUser.usia);
-  setValue("nikEdit", storedUser.nik);
-  setValue("telpEdit", storedUser.noTelp);
-  setValue("alamatEdit", storedUser.alamat);
-
-  // set radio button jenis kelamin
-  const genderInputs = document.querySelectorAll('input[name="genderEdit"]');
-  genderInputs.forEach((radio) => {
-    radio.checked = radio.value === storedUser.gender;
-  });
-
-  // tombol batal
-  if (cancelBtn) {
-    cancelBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      if (confirm("Batalkan perubahan dan kembali ke profil pengelola?")) {
-        window.location.href = "profile-pengelola.html";
-      }
+  // navigasi ke halaman edit profil
+  if (editBtn) {
+    editBtn.addEventListener("click", () => {
+      window.location.href = "edit-profile-pengelola.html";
     });
   }
 
-  // tombol simpan
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      const nama = document.getElementById("namaEdit")?.value.trim();
-      const telp = document.getElementById("telpEdit")?.value.trim();
-
-      // validasi hanya nama yang wajib diisi
-      if (!nama) {
-        alert("Harap isi nama lengkap terlebih dahulu.");
-        return;
-      }
-
-      // data baru dari form
-      const updatedUser = {
-        username: document.getElementById("usernameEdit").value,
-        email: document.getElementById("emailEdit").value,
-        nama,
-        usia: document.getElementById("usiaEdit").value,
-        nik: document.getElementById("nikEdit").value,
-        gender:
-          document.querySelector('input[name="genderEdit"]:checked')?.value || "",
-        noTelp: telp || "-",
-        alamat: document.getElementById("alamatEdit").value,
-        role: "pengelola"
-      };
-
-      // simpan data ke localstorage
-      localStorage.setItem("userData", JSON.stringify(updatedUser));
-
-      alert("Data profil pengelola berhasil disimpan!");
-      window.location.href = "profile-pengelola.html";
+  // navigasi ke halaman logout
+  if (logoutTab) {
+    logoutTab.addEventListener("click", () => {
+      window.location.href = "logout-pengelola.html";
     });
+  }
+
+  // ambil data user dari localStorage
+  const storedUser = JSON.parse(localStorage.getItem("userData")) || {};
+
+  // fungsi bantu untuk set teks elemen
+  const setText = (id, text) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = text || "-";
+  };
+
+  // tampilkan data user ke halaman profil
+  setText("usernameValue", storedUser.username);
+  setText("fullnameValue", storedUser.nama);
+  setText("emailValue", storedUser.email);
+  setText("ageValue", storedUser.usia);
+  setText("nikValue", storedUser.nik);
+  setText("addressValue", storedUser.alamat);
+  setText("phoneValue", storedUser.noTelp);
+
+  // tampilkan jenis kelamin
+  const radios = document.querySelectorAll('input[name="gender"]');
+  radios.forEach((radio) => {
+    radio.checked = radio.value === storedUser.gender;
+  });
+
+  // update ucapan di pojok kanan atas
+  const greeting = document.getElementById("greeting");
+  if (greeting && storedUser.nama) {
+    const firstName = storedUser.nama.split(" ")[0];
+    greeting.textContent = `Hai, ${firstName}`;
   }
 });

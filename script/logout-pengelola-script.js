@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // tombol batal kembali ke profil
   cancelBtn.addEventListener("click", () => {
-    window.location.href = "profile.html";
+    window.location.href = "profile-pengelola.html";
   });
 
   // tombol keluar (hapus data dan ke login)

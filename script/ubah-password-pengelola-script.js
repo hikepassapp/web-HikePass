@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   cancelBtn.addEventListener("click", (e) => {
     e.preventDefault();
     if (confirm("Batalkan perubahan password dan kembali ke profil?")) {
-      window.location.href = "profile.html";
+      window.location.href = "profile-pengelola.html";
     }
   });
 
@@ -29,6 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     alert("Password berhasil diubah!");
-    window.location.href = "profile.html";
+    window.location.href = "profile-pengelola.html";
   });
 });
