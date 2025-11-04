@@ -2,120 +2,120 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HikePass - Profil</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HikePass - Profil</title>
 
-  <!-- file css utama -->
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/layout.css" />
-  <link rel="stylesheet" href="css/component.css" />
-  <link rel="stylesheet" href="css/page-profile.css" />
+    <!-- file css utama -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/component.css" />
+    <link rel="stylesheet" href="css/page-profile.css" />
 </head>
 
 <body>
-  <!-- navbar -->
-  <header class="navbar">
-    <div class="logo">
-      <img src="assets/logoHikepass.svg" alt="Logo HikePass" />
-      <h2>HikePass</h2>
+    <!-- navbar -->
+    <header class="navbar">
+        <div class="logo">
+            <img src="assets/logoHikepass.svg" alt="Logo HikePass" />
+            <h2>HikePass</h2>
+        </div>
+
+        <nav class="navbar-menu">
+            <a href="home.html">Home</a>
+            <a href="reservasi.html">Reservasi</a>
+            <a href="#">Tiket Saya</a>
+        </nav>
+
+        <div class="logo">
+            <p id="greeting">Hai, Yanto</p>
+            <img src="assets/avatarUser.png" alt="User Avatar" />
+        </div>
+    </header>
+
+    <!-- banner -->
+    <section class="banner-section">
+        <img src="assets/imgBackground.jpg" alt="Banner" class="banner-img" />
+
+        <!-- foto profil -->
+        <div class="profile-photo-container">
+            <div class="profile-circle">
+                <img src="assets/profile.png" alt="Foto Profil" class="profile-photo" />
+                <div class="edit-photo-icon">
+                    <img src="assets/edit_foto.png" alt="Edit Foto" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- tab menu -->
+    <div class="profile-tabs">
+        <button class="tab active" data-tab="tab-profile">Informasi Profile</button>
+        <button class="tab" onclick="window.location.href='ubah-password.html'">Ubah Password</button>
+        <button class="tab" id="logoutBtn">Logout</button>
     </div>
+    
+    <!-- konten informasi profil -->
+    <section class="profile-info" id="tab-profile">
+        <div class="profile-card">
+            <div class="edit-icon" id="editProfileBtn">
+                <img src="assets/edit.png" alt="Edit Icon" />
+            </div>
 
-    <nav class="navbar-menu">
-      <a href="home.html">Home</a>
-      <a href="reservasi.html">Reservasi</a>
-      <a href="#">Tiket Saya</a>
-    </nav>
+            <div class="info-grid">
+                <div>
+                    <p class="label">Username</p>
+                    <p class="value" id="usernameValue">yanto123321</p>
+                </div>
 
-    <div class="logo">
-      <p id="greeting">Hai, Yanto</p>
-      <img src="assets/avatarUser.png" alt="User Avatar" />
-    </div>
-  </header>
+                <div>
+                    <p class="label">Nama Lengkap</p>
+                    <p class="value" id="fullnameValue">Yanto</p>
+                </div>
 
-  <!-- banner -->
-  <section class="banner-section">
-    <img src="assets/imgBackground.jpg" alt="Banner" class="banner-img" />
+                <div>
+                    <p class="label">Alamat</p>
+                    <p class="value" id="addressValue">-</p>
+                </div>
 
-    <!-- foto profil -->
-    <div class="profile-photo-container">
-      <div class="profile-circle">
-        <img src="assets/profile.png" alt="Foto Profil" class="profile-photo" />
-        <div class="edit-photo-icon">
-          <img src="assets/edit_foto.png" alt="Edit Foto" />
+                <div>
+                    <p class="label">Email</p>
+                    <p class="value" id="emailValue">yanto@gmail.com</p>
+                </div>
+
+                <div>
+                    <p class="label">Usia</p>
+                    <p class="value" id="ageValue">-</p>
+                </div>
+
+                <div>
+                    <p class="label">NIK</p>
+                    <p class="value" id="nikValue">-</p>
+                </div>
+
+                <div>
+                    <p class="label">Jenis Kelamin</p>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="gender" value="Laki-laki" disabled />
+                            Laki-laki
+                        </label>
+                        <label>
+                            <input type="radio" name="gender" value="Perempuan" disabled checked />
+                            Perempuan
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="label">No Telepon</p>
+                    <p class="value" id="phoneValue">-</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- tab menu -->
-  <div class="profile-tabs">
-    <button class="tab active" data-tab="tab-profile">Informasi Profile</button>
-    <button class="tab" onclick="window.location.href='ubah-password.html'">Ubah Password</button>
-    <button class="tab" onclick="window.location.href='pengaturan-privasi.html'">Pengaturan Privasi</button>
-  </div>
-
-  <!-- konten informasi profil -->
-  <section class="profile-info" id="tab-profile">
-    <div class="profile-card">
-      <div class="edit-icon" id="editProfileBtn">
-        <img src="assets/edit.png" alt="Edit Icon" />
-      </div>
-
-      <div class="info-grid">
-        <div>
-          <p class="label">Username</p>
-          <p class="value" id="usernameValue">yanto123321</p>
-        </div>
-
-        <div>
-          <p class="label">Nama Lengkap</p>
-          <p class="value" id="fullnameValue">Yanto</p>
-        </div>
-
-        <div>
-          <p class="label">Alamat</p>
-          <p class="value" id="addressValue">-</p>
-        </div>
-
-        <div>
-          <p class="label">Email</p>
-          <p class="value" id="emailValue">yanto@gmail.com</p>
-        </div>
-
-        <div>
-          <p class="label">Usia</p>
-          <p class="value" id="ageValue">-</p>
-        </div>
-
-        <div>
-          <p class="label">NIK</p>
-          <p class="value" id="nikValue">-</p>
-        </div>
-
-        <div>
-          <p class="label">Jenis Kelamin</p>
-          <div class="radio-group">
-            <label>
-              <input type="radio" name="gender" value="Laki-laki" disabled />
-              Laki-laki
-            </label>
-            <label>
-              <input type="radio" name="gender" value="Perempuan" disabled checked />
-              Perempuan
-            </label>
-          </div>
-        </div>
-
-        <div>
-          <p class="label">No Telepon</p>
-          <p class="value" id="phoneValue">-</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <script src="script/profile-script.js"></script>
+    <script src="script/profile-script.js"></script>
 </body>
 
 </html>

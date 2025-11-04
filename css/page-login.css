@@ -140,3 +140,50 @@
   align-items: center;
   text-align: center;
 }
+
+/* pengaturan tampilan responsif */
+@media (max-width: 1024px) {
+  .profile-card {
+    width: 90%;
+    padding: 40px;
+  }
+
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-tabs {
+    gap: 25px;
+    font-size: 14px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .profile-card {
+    padding: 30px;
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-photo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .profile-tabs {
+    flex-wrap: wrap;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .profile-card {
+    padding: 25px;
+  }
+}

@@ -1,0 +1,101 @@
+/* layout umum edit profile */
+.profile-info {
+  display: flex;
+  justify-content: center;
+  margin-top: 120px;  
+  margin-bottom: 120px;
+}
+
+/* kartu form */
+.profile-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  padding: 60px 80px;
+  width: 95%;
+  max-width: 1200px;
+  overflow: visible;
+}
+
+/* isi form */
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px 50px;
+}
+
+/* input dan textarea */
+.info-grid input,
+.info-grid textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.info-grid input[readonly] {
+  background-color: #f3f3f3;
+  cursor: not-allowed;
+}
+
+/* tombol */
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.btn-save,
+.btn-cancel {
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  font-size: 15px;
+}
+
+.btn-save {
+  background-color: #0f4d3f;
+  color: #fff;
+  border: none;
+}
+
+.btn-save:hover {
+  background-color: #0c3f34;
+}
+
+.btn-cancel {
+  background-color: #ccc;
+  color: #333;
+  border: none;
+}
+
+.btn-cancel:hover {
+  background-color: #b5b5b5;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .profile-info {
+    margin-top: 80px;
+  }
+
+  .profile-card {
+    padding: 40px 30px;
+    max-width: 95%;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
