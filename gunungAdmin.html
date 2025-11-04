@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Gunung - Admin</title>
+
+    <link rel="stylesheet" href="css/base-admin.css">
+    <link rel="stylesheet" href="css/admin-gunung.css">
+</head>
+
+<!-- MODAL TAMBAH DATA -->
+<div id="modalAdd" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModalAdd">&times;</span>
+        <h2>Tambah Data Gunung</h2>
+
+        <form id="addGunungForm">
+            <label>Nama Gunung</label>
+            <input type="text" id="addNama" required>
+
+            <label>Harga Tiket</label>
+            <input type="text" id="addHarga" required>
+
+            <label>Jarak & Pos</label>
+            <input type="text" id="addJarak" required>
+
+            <label>Estimasi Waktu</label>
+            <input type="text" id="addWaktu" required>
+
+            <label>Level Pendaki</label>
+            <input type="text" id="addLevel" required>
+
+            <label>Include Fasilitas</label>
+            <input type="text" id="addFasilitas" required>
+
+            <label>URL Foto</label>
+            <input type="text" id="addImage" placeholder="https://...." required>
+
+            <button class="btn-add" type="submit">Simpan</button>
+        </form>
+    </div>
+</div>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">Hikepass Admin</div>
+        <nav>
+            <a href="#">Dashboard</a>
+            <a href="#" class="active">Data Gunung</a>
+            <a href="#">Informasi</a>
+            <a href="#">Paket Wisata</a>
+            <a href="laporanAdmin.html">Laporan</a>
+            <a href="#">User</a>
+        </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <header class="topbar">
+            <h2>Gunung</h2>
+            <div class="profile">
+                <span>Admin 02</span>
+                <img src="assets/user.png" alt="profile">
+            </div>
+        </header>
+
+        <section class="content-box">
+
+            <div class="content-header">
+                <h3>Data Gunung</h3>
+                <button class="btn-add" id="openModalAdd">+ Tambah Data</button>
+            </div>
+
+            <div class="action-bar">
+                <label>Show
+                    <select id="showCount">
+                        <option value="8">8</option>
+                        <option value="12">12</option>
+                        <option value="16">16</option>
+                    </select>
+                    Data
+                </label>
+
+                <input type="text" id="searchInput" placeholder="Search...">
+            </div>
+
+            <div id="mountainContainer" class="card-grid"></div>
+
+            <div class="pagination" id="pagination"></div>
+
+        </section>
+    </main>
+
+<script src="script/admin-gunung-script.js"></script>
+</body>
+</html>

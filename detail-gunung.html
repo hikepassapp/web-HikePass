@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Detail Gunung</title>
+<link rel="stylesheet" href="css/base-admin.css">
+</head>
+<body style="padding:20px;">
+<div id="detailBox"></div>
+
+<script>
+const g = JSON.parse(localStorage.getItem("detailGunung"));
+document.getElementById("detailBox").innerHTML = `
+    <h2>${g.nama}</h2>
+    <img src="${g.image}" style="width:300px;border-radius:10px;">
+    <p>HTM: ${g.harga}</p>
+    <p>${g.jarak}</p>
+    <p>${g.waktu}</p>
+    <p>${g.level}</p>
+    <p>${g.fasilitas}</p>
+    <br>
+    <a href="admin-gunung.html">Kembali</a>
+`;
+</script>
+</body>
+</html>

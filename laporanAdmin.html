@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan User - Admin</title>
+
+    <link rel="stylesheet" href="css/base-admin.css">
+    <link rel="stylesheet" href="css/admin-laporan.css">
+</head>
+
+<body>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">Hikepass Admin</div>
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="gunungAdmin.html">Data Gunung</a>
+            <a href="#">Informasi</a>
+            <a href="#">Paket Wisata</a>
+            <a href="#" class="active">Laporan</a>
+            <a href="#">User</a>
+        </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <header class="topbar">
+            <h2>Laporan User</h2>
+            <div class="profile">
+                <span>Admin 02</span>
+                <img src="assets/user.png" alt="profile">
+            </div>
+        </header>
+
+        <section class="content-box">
+            <div class="content-header">
+                <h3>Data Laporan Masuk</h3>
+                <button id="btnRefresh" class="btn-add">Refresh</button>
+            </div>
+            
+            <div class="filter-bar">
+                <input type="text" id="searchInput" placeholder="Cari nama, email, lokasi...">
+
+                <select id="filterKategori">
+                    <option value="">Semua Kategori</option>
+                    <option value="Sampah">Sampah</option>
+                    <option value="Fasilitas">Fasilitas</option>
+                    <option value="Keamanan">Keamanan</option>
+                    <option value="Layanan">Layanan</option>
+                </select>
+
+                <input type="date" id="startDate">
+                <input type="date" id="endDate">
+
+                <button id="resetFilter" class="btn-add">Reset</button>
+            </div>
+
+            <div id="laporanContainer"></div>
+
+        </section>
+    </main>
+
+    <script src="script/admin-laporan-script.js"></script>
+</body>
+
+</html>
