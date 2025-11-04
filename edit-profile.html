@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Profil</title>
+
+  <!-- modular css -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/component.css" />
+  <link rel="stylesheet" href="css/page-profile.css" />
+  <link rel="stylesheet" href="css/page-edit-profile.css" /> 
+</head>
+
+<body>
+  <!-- navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="assets/logoHikepass.svg" alt="Logo HikePass" />
+      <h2>HikePass</h2>
+    </div>
+
+    <nav class="navbar-menu">
+      <a href="home.html">Home</a>
+      <a href="reservasi.html">Reservasi</a>
+      <a href="tiket.html">Tiket Saya</a>
+    </nav>
+
+    <div class="logo">
+      <p id="greeting">Hai, Yanto</p>
+      <img src="assets/avatarUser.png" alt="User Avatar" class="avatar" id="goProfile" />
+    </div>
+  </header>
+
+  <!-- banner -->
+  <section class="banner-section">
+    <img src="assets/imgBackground.jpg" alt="Banner Profil" class="banner-img" />
+
+    <div class="profile-photo-container">
+      <div class="profile-circle">
+        <img src="assets/profile.png" alt="Foto Profil" class="profile-photo" />
+      </div>
+    </div>
+  </section>
+
+  <!-- form edit profil -->
+  <section class="profile-info">
+    <div class="profile-card">
+      <h2 style="margin-bottom: 25px; color: #0f4d3f;">Edit Profil</h2>
+
+      <form id="editProfileForm" class="edit-form">
+        <div class="info-grid">
+          <!-- username -->
+          <div>
+            <label class="label">Username</label>
+            <input type="text" id="usernameEdit" readonly />
+          </div>
+
+          <!-- email -->
+          <div>
+            <label class="label">Email</label>
+            <input type="email" id="emailEdit" readonly />
+          </div>
+
+          <!-- nama -->
+          <div>
+            <label class="label">Nama Lengkap <span class="required">*</span></label>
+            <input type="text" id="namaEdit" required />
+          </div>
+
+          <!-- usia -->
+          <div>
+            <label class="label">Usia</label>
+            <input type="number" id="usiaEdit" min="1" />
+          </div>
+
+          <!-- nik -->
+          <div>
+            <label class="label">NIK</label>
+            <input type="text" id="nikEdit" />
+          </div>
+
+          <!-- jenis kelamin -->
+          <div>
+            <label class="label">Jenis Kelamin</label>
+            <div class="radio-group">
+              <label><input type="radio" name="genderEdit" value="Laki-laki" /> Laki-laki</label>
+              <label><input type="radio" name="genderEdit" value="Perempuan" /> Perempuan</label>
+            </div>
+          </div>
+
+          <!-- no telepon -->
+          <div>
+            <label class="label">No Telepon</label>
+            <input type="tel" id="telpEdit" pattern="[0-9]+" placeholder="" />
+          </div>
+
+          <!-- alamat -->
+          <div class="full">
+            <label class="label">Alamat</label>
+            <textarea id="alamatEdit" rows="3" placeholder=""></textarea>
+          </div>
+        </div>
+
+        <!-- tombol -->
+        <div class="form-buttons" style="margin-top: 30px;">
+          <button type="button" id="cancelBtn" class="btn-cancel">Batal</button>
+          <button type="submit" class="btn-save">Simpan</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <script src="script/edit-profile-script.js"></script>
+</body>
+</html>
