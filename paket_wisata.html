@@ -1,22 +1,245 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Informasi - Hikepass</title>
-    <link rel="stylesheet" href="css/navbar_pengelola.css" />
-  </head>
-  <body>
-    <!-- Placeholder untuk navbar -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paket Wisata - Hikepass</title>
+    <link rel="stylesheet" href="css/navbar_pengelola.css">
+    <link rel="stylesheet" href="css/paket_wisata.css">
+</head>
+<body>
     <div id="navbar-placeholder"></div>
 
-    <!-- Konten halaman -->
-    <main>
-      <h1>Halaman Informasi</h1>
-      <p>Konten di sini...</p>
-    </main>
+    <section class="hero">
+        <img src="assets/pengelola/paket-wisata.jpg" alt="Paket Wisata">
+        <div class="hero-content">
+            <h1>Paket Wisata</h1>
+            <p>Kelola paket wisata menarik!</p>
+            <button id="tambahBtn">
+                <img src="assets/pengelola/tambah.png" alt="Tambah">
+                <span>Tambah</span>
+            </button>
+        </div>
+    </section>
 
-    <!-- Load navbar -->
+    <section class="cards">
+        <div class="container">
+            <div class="card" id="card1">
+                <img src="assets/pengelola/paket-wisata-1.jpg" alt="Gunung Puntang">
+                <div class="card-body">
+                    <h3>Gunung Puntang</h3>
+                    <p class="lokasi">Kec. Cimaung, Kab. Bandung, Jawa Barat</p>
+                    
+                    <div class="info">
+                        <div>
+                            <img src="assets/pengelola/tinggi.png" alt="Tinggi">
+                            <span>2.223 mdpl</span>
+                        </div>
+                        <div>
+                            <img src="assets/pengelola/jarak-pos.png" alt="Jarak">
+                            <span>10 km, 5 pos</span>
+                        </div>
+                        <div>
+                            <img src="assets/pengelola/durasi.png" alt="Durasi">
+                            <span>4 jam</span>
+                        </div>
+                        <div>
+                            <img src="assets/pengelola/wisata.png" alt="Wisata">
+                            <span>Puncak Mega</span>
+                        </div>
+                        <div>
+                            <img src="assets/pengelola/level.png" alt="Level">
+                            <span>Pemula - Menengah</span>
+                        </div>
+                        <div>
+                            <img src="assets/pengelola/harga.png" alt="Harga">
+                            <span>Rp.30.000</span>
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <button class="edit" onclick="editCard(1)">
+                            <img src="assets/pengelola/edit.png" alt="Edit">
+                            <span>Edit</span>
+                        </button>
+                        <button class="hapus" onclick="hapusCard(1)">
+                            <img src="assets/pengelola/hapus.png" alt="Hapus">
+                            <span>Hapus</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" id="card2">
+                <img src="assets/pengelola/paket-wisata-2.jpg" alt="Gunung Malabar">
+                <div class="card-body">
+                    <h3>Gunung Malabar</h3>
+                    <p class="lokasi">Kec. Pangalengan, Kab. Bandung, Jawa Barat</p>
+                    
+                    <div class="info">
+                        <div>
+                            <img src="assets/pengelola/tinggi.png" alt="Tinggi">
+                            <span>2.343 mdpl</span>
+                        </div>
+                        <div>
+                            <img src="assets/pengelola/jarak-pos.png" alt="Jarak">
+                            <span>9 km, 5 pos</span>
+                        </div>
+                        <div>
+                            <img src="assets/pengelola/durasi.png" alt="Durasi">
+                            <span>5 jam</span>
+                        </div>
+                        <div>
+                            <img src="assets/pengelola/wisata.png" alt="Wisata">
+                            <span>Kebun teh</span>
+                        </div>
+                        <div>
+                            <img src="assets/pengelola/level.png" alt="Level">
+                            <span>Menengah</span>
+                        </div>
+                        <div>
+                            <img src="assets/pengelola/harga.png" alt="Harga">
+                            <span>Rp.30.000</span>
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <button class="edit" onclick="editCard(2)">
+                            <img src="assets/pengelola/edit.png" alt="Edit">
+                            <span>Edit</span>
+                        </button>
+                        <button class="hapus" onclick="hapusCard(2)">
+                            <img src="assets/pengelola/hapus.png" alt="Hapus">
+                            <span>Hapus</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" id="card3">
+                <img src="assets/pengelola/paket-wisata-3.jpg" alt="Gunung Cikuray">
+                <div class="card-body">
+                    <h3>Gunung Cikuray</h3>
+                    <p class="lokasi">Kab. Garut, Jawa Barat</p>
+                    
+                    <div class="info">
+                        <div>
+                            <img src="assets/pengelola/tinggi.png" alt="Tinggi">
+                            <span>2.821 mdpl</span>
+                        </div>
+                        <div>
+                            <img src="assets/pengelola/jarak-pos.png" alt="Jarak">
+                            <span>13 km, 7 pos</span>
+                        </div>
+                        <div>
+                            <img src="assets/pengelola/durasi.png" alt="Durasi">
+                            <span>8 jam</span>
+                        </div>
+                        <div>
+                            <img src="assets/pengelola/wisata.png" alt="Wisata">
+                            <span>Papandayan - Guntur - Galunggung</span>
+                        </div>
+                        <div>
+                            <img src="assets/pengelola/level.png" alt="Level">
+                            <span>Menengah - Sulit</span>
+                        </div>
+                        <div>
+                            <img src="assets/pengelola/harga.png" alt="Harga">
+                            <span>Rp.30.000</span>
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <button class="edit" onclick="editCard(3)">
+                            <img src="assets/pengelola/edit.png" alt="Edit">
+                            <span>Edit</span>
+                        </button>
+                        <button class="hapus" onclick="hapusCard(3)">
+                            <img src="assets/pengelola/hapus.png" alt="Hapus">
+                            <span>Hapus</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="modalTambah">
+        <div class="modal-content">
+            <h2 id="modalTitle">Tambah Paket Wisata</h2>
+              
+            <form id="formTambah">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nama Gunung</label>
+                        <input type="text" id="namaGunung" placeholder="mis: Gunung Puntang" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Alamat Gunung</label>
+                        <input type="text" id="alamatGunung" placeholder="mis: Kec. Cimaung, Kab. Bandung, Jawa Barat" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Elevasi Gunung</label>
+                        <input type="text" id="elevasiGunung" placeholder="mis: 2.223 mdpl" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Durasi Pendakian</label>
+                        <input type="text" id="durasiPendakian" placeholder="mis: 4 jam" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Jarak Pendakian</label>
+                        <input type="text" id="jarakPendakian" placeholder="mis: 10 km, 5 pos" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Pemandangan</label>
+                        <input type="text" id="pemandangan" placeholder="mis: Puncak Mega" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Level Pendaki</label>
+                        <input type="text" id="levelPendaki" placeholder="mis: Pemula - Menengah" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Harga</label>
+                        <input type="text" id="harga" placeholder="mis: Rp.30.000" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Upload Gambar</label>
+                        <input type="file" id="uploadGambar" accept="image/*">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-batal" onclick="tutupModal()">Batal</button>
+                    <button type="submit" class="btn-simpan">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="modalKonfirmasi">
+        <div class="modal-content modal-konfirmasi">
+            <h2>Anda yakin ingin menghapus?</h2>
+            <div class="konfirmasi-actions">
+                <button class="btn-batal-konfirmasi" onclick="tutupKonfirmasi()">Batal</button>
+                <button class="btn-hapus-konfirmasi" onclick="konfirmasiHapus()">Hapus</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script/load-navbar.js"></script>
-  </body>
+    <script src="script/navbar_pengelola.js"></script>
+    <script src="script/paket_wisata.js"></script>
+</body>
 </html>
