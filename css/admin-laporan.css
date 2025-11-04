@@ -1,0 +1,35 @@
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.data-table th {
+    background: var(--primary);
+    color: #fff;
+    padding: 10px;
+}
+
+.data-table td {
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+}
+
+.data-table img {
+    border-radius: 6px;
+}
+
+.btn-delete {
+    background: #d9534f;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-delete:hover {
+    background: #c9302c;
+}

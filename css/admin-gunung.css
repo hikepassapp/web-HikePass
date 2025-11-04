@@ -1,0 +1,10 @@
+.card-body h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.card-body p {
+    font-size: 13px;
+    margin-bottom: 4px;
+}
