@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
     <!-- SIDEBAR -->
     <aside class="sidebar">
         <div class="logo">Hikepass Admin</div>
@@ -36,10 +35,26 @@
         </header>
 
         <section class="content-box">
-
             <div class="content-header">
                 <h3>Data Laporan Masuk</h3>
                 <button id="btnRefresh" class="btn-add">Refresh</button>
+            </div>
+            
+            <div class="filter-bar">
+                <input type="text" id="searchInput" placeholder="Cari nama, email, lokasi...">
+
+                <select id="filterKategori">
+                    <option value="">Semua Kategori</option>
+                    <option value="Sampah">Sampah</option>
+                    <option value="Fasilitas">Fasilitas</option>
+                    <option value="Keamanan">Keamanan</option>
+                    <option value="Layanan">Layanan</option>
+                </select>
+
+                <input type="date" id="startDate">
+                <input type="date" id="endDate">
+
+                <button id="resetFilter" class="btn-add">Reset</button>
             </div>
 
             <div id="laporanContainer"></div>

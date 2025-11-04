@@ -1,11 +1,11 @@
-// Ambil data laporan
-function loadLaporan() {
+let originalData = JSON.parse(localStorage.getItem("laporanHikepass")) || [];
+
+function loadLaporan(data = originalData) {
     const laporanContainer = document.getElementById("laporanContainer");
-    let data = JSON.parse(localStorage.getItem("laporanHikepass")) || [];
 
     if (data.length === 0) {
         laporanContainer.innerHTML = `
-            <p style="text-align:center; padding:20px;">Belum ada laporan masuk.</p>
+            <p style="text-align:center; padding:20px;">Tidak ada data ditemukan.</p>
         `;
         return;
     }
@@ -50,17 +50,54 @@ function loadLaporan() {
     laporanContainer.innerHTML = html;
 }
 
-// Hapus laporan
 function hapusLaporan(id) {
-    let data = JSON.parse(localStorage.getItem("laporanHikepass")) || [];
-    let newData = data.filter(l => l.id !== id);
-
-    localStorage.setItem("laporanHikepass", JSON.stringify(newData));
-    loadLaporan();
+    originalData = originalData.filter(l => l.id !== id);
+    localStorage.setItem("laporanHikepass", JSON.stringify(originalData));
+    applyFilter();
 }
 
-// Tombol Refresh
 document.getElementById("btnRefresh").addEventListener("click", () => location.reload());
 
-// Load pertama kali
+// ✅ Search & Filter
+function applyFilter() {
+    const keyword = document.getElementById("searchInput").value.toLowerCase();
+    const kategori = document.getElementById("filterKategori").value;
+    const start = document.getElementById("startDate").value;
+    const end = document.getElementById("endDate").value;
+
+    const filtered = originalData.filter(item => {
+        const matchKeyword =
+            item.nama.toLowerCase().includes(keyword) ||
+            item.email.toLowerCase().includes(keyword) ||
+            item.lokasi.toLowerCase().includes(keyword) ||
+            item.kategori.toLowerCase().includes(keyword);
+
+        const matchKategori = kategori ? item.kategori === kategori : true;
+
+        const itemDate = new Date(item.tanggal);
+        const matchDate =
+            (!start || itemDate >= new Date(start)) &&
+            (!end || itemDate <= new Date(end));
+
+        return matchKeyword && matchKategori && matchDate;
+    });
+
+    loadLaporan(filtered);
+}
+
+// Event Listener Filters
+document.getElementById("searchInput").addEventListener("input", applyFilter);
+document.getElementById("filterKategori").addEventListener("change", applyFilter);
+document.getElementById("startDate").addEventListener("change", applyFilter);
+document.getElementById("endDate").addEventListener("change", applyFilter);
+
+document.getElementById("resetFilter").addEventListener("click", () => {
+    document.getElementById("searchInput").value = "";
+    document.getElementById("filterKategori").value = "";
+    document.getElementById("startDate").value = "";
+    document.getElementById("endDate").value = "";
+    loadLaporan();
+});
+
+// Load data awal
 loadLaporan();
