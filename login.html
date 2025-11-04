@@ -21,12 +21,16 @@
                     <h2 class="form-title">Sign In</h2>
 
                     <div class="input-group">
+                        <label for="email">Email</label>
                         <input type="email" placeholder="Email">
                     </div>
 
                     <div class="input-group">
-                        <input type="password" id="password" placeholder="Password">
-                        <img src="assets/hide.svg" id="togglePassword" class="toggle-password" alt="Show Password">
+                        <label for="password">Password</label>
+                        <div class="input-group">
+                            <input type="password" id="password" placeholder="Password">
+                            <img src="assets/hide.svg" id="togglePassword" class="toggle-password" alt="Show Password">
+                        </div>
                     </div>
 
                     <button class="signin-btn" id="signin-btn">SIGN IN</button>
@@ -45,19 +49,29 @@
                     <h2 class="form-title">Register</h2>
 
                     <div class="input-group">
+                        <label for="namaLengkap">Nama Lengkap</label>
                         <input type="text" placeholder="Nama Lengkap" id="namaLengkap">
                     </div>
 
                     <div class="input-group">
+                        <label for="email">Email</label>
                         <input type="email" placeholder="Email" id="emailRegister">
                     </div>
 
                     <div class="input-group">
-                        <input type="password" placeholder="Password" id="passwordRegister">
+                        <label for="password">Password</label>
+                        <div class="input-group">
+                            <input type="password" id="passwordRegister" placeholder="Password">
+                            <img src="assets/hide.svg" id="togglePassword" class="toggle-password" alt="Show Password">
+                        </div>
                     </div>
 
                     <div class="input-group">
-                        <input type="password" placeholder="Konfirmasi Password" id="konfirmasiPassword">
+                        <label for="password">Konfirmasi Password</label>
+                        <div class="input-group">
+                            <input type="password" id="konfirmasiPassword" placeholder="Password">
+                            <img src="assets/hide.svg" id="togglePassword" class="toggle-password" alt="Show Password">
+                        </div>
                     </div>
 
                     <button class="signin-btn" id="daftar-btn">DAFTAR</button>

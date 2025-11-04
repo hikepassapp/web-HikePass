@@ -33,6 +33,15 @@
 .input-group {
   position: relative;
   margin-bottom: 18px;
+  text-align: start;
+}
+
+label {
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: var(--secondary);
+  font-weight: 600;
+  display: block;
 }
 
 /* style input teks */

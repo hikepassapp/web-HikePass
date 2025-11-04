@@ -1,125 +1,88 @@
-// toggle show hide password
-const togglePassword = document.getElementById('togglePassword');
-const passwordInput = document.getElementById('password');
+<!DOCTYPE html>
+<html lang="en">
 
-if (togglePassword && passwordInput) {
-  togglePassword.addEventListener('click', () => {
-    const isPassword = passwordInput.type === 'password';
-    passwordInput.type = isPassword ? 'text' : 'password';
-    togglePassword.src = isPassword ? 'assets/show.svg' : 'assets/hide.svg';
-  });
-}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/component.css">
+    <link rel="stylesheet" href="css/page-login.css">
+</head>
 
-// navigasi tombol login dan register
-const signinBtn = document.getElementById("signin-btn");
-const daftarBtn = document.getElementById("daftar-btn");
-const showRegister = document.getElementById("showRegister");
-const showLogin = document.getElementById("showLogin");
-const signInForm = document.getElementById("signInForm");
-const registerForm = document.getElementById("registerForm");
+<body>
+    <div class="login-page">
+        <!-- bagian kiri -->
+        <div class="split-left">
+            <div class="content" id="formContainer">
+                <!-- form sign in -->
+                <div id="signInForm">
+                    <h2 class="form-title">Sign In</h2>
 
-// tombol login
-if (signinBtn) {
-  signinBtn.addEventListener("click", () => {
-    const emailInput = document.querySelector('#signInForm input[type="email"]');
-    const passwordInput = document.querySelector('#signInForm input[type="password"]');
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
+                    <div class="input-group">
+                        <input type="email" placeholder="Email">
+                    </div>
 
-    if (!email || !password) {
-      alert("Email dan password harus diisi!");
-      return;
-    }
+                    <div class="input-group">
+                        <input type="password" id="password" placeholder="Password">
+                        <img src="assets/hide.svg" id="togglePassword" class="toggle-password" alt="Show Password">
+                    </div>
 
-    // login pendaki
-    if (email === "yanto@gmail.com" && password === "yanto123") {
-      alert("Login berhasil! Selamat datang Pendaki.");
-      window.location.href = "home.html";
-    }
-    // login pengelola
-    else if (email === "thanos@gmail.com" && password === "thanos123") {
-      alert("Login berhasil! Selamat datang Pengelola.");
-      window.location.href = "home-pengelola.html";
-    }
-    // gagal login
-    else {
-      alert("Email atau password salah! Coba lagi.");
-    }
-  });
-}
+                    <button class="signin-btn" id="signin-btn">SIGN IN</button>
 
-// tombol daftar
-if (daftarBtn) {
-  daftarBtn.addEventListener("click", () => {
-    const nama = document.getElementById("namaLengkap").value.trim();
-    const email = document.getElementById("emailRegister").value.trim();
-    const password = document.getElementById("passwordRegister").value.trim();
-    const konfirmasi = document.getElementById("konfirmasiPassword").value.trim();
+                    <div class="divider">
+                        <span></span>
+                        <p>Belum punya akun?</p>
+                        <span></span>
+                    </div>
 
-    if (!nama || !email || !password || !konfirmasi) {
-      alert("Harap isi semua kolom terlebih dahulu!");
-      return;
-    }
+                    <button class="white-btn" id="showRegister">REGISTER</button>
+                </div>
 
-    if (password !== konfirmasi) {
-      alert("Password dan konfirmasi tidak cocok!");
-      return;
-    }
+                <!-- form register -->
+                <div id="registerForm" style="display: none;">
+                    <h2 class="form-title">Register</h2>
 
-    // deteksi role berdasarkan email
-    if (email.includes("pengelola") || email === "thanos@gmail.com") {
-      alert("Pendaftaran berhasil sebagai Pengelola!");
-      window.location.href = "home-pengelola.html";
-    } else {
-      alert("Pendaftaran berhasil sebagai Pendaki!");
-      window.location.href = "home.html";
-    }
-  });
-}
+                    <div class="input-group">
+                        <input type="text" placeholder="Nama Lengkap" id="namaLengkap">
+                    </div>
 
-// toggle tampilan form login dan register
-if (showRegister && showLogin) {
-  showRegister.addEventListener("click", () => {
-    signInForm.style.display = "none";
-    registerForm.style.display = "block";
-  });
+                    <div class="input-group">
+                        <input type="email" placeholder="Email" id="emailRegister">
+                    </div>
 
-  showLogin.addEventListener("click", () => {
-    registerForm.style.display = "none";
-    signInForm.style.display = "block";
-  });
-}
+                    <div class="input-group">
+                        <input type="password" placeholder="Password" id="passwordRegister">
+                    </div>
 
-// tombol menu tambahan opsional
-const userBtn = document.getElementById("userBtn");
-const reservasiBtn = document.getElementById("reservasi-btn");
-const rsvSemeruBtn = document.getElementById("reservasi-semeru-btn");
+                    <div class="input-group">
+                        <input type="password" placeholder="Konfirmasi Password" id="konfirmasiPassword">
+                    </div>
 
-if (userBtn) {
-  userBtn.addEventListener("click", () => {
-    window.location.href = "loginUser.html";
-  });
-}
+                    <button class="signin-btn" id="daftar-btn">DAFTAR</button>
 
-if (reservasiBtn) {
-  reservasiBtn.addEventListener("click", () => {
-    window.location.href = "reservasi.html";
-  });
-}
+                    <div class="divider">
+                        <span></span>
+                        <p>Sudah punya akun?</p>
+                        <span></span>
+                    </div>
 
-if (rsvSemeruBtn) {
-  rsvSemeruBtn.addEventListener("click", () => {
-    window.location.href = "semeru-page.html";
-  });
-}
+                    <button class="white-btn" id="showLogin">SIGN IN</button>
+                </div>
+            </div>
+        </div>
 
-// tombol menuju halaman reservasi
-function pindahKeReservasi() {
-  console.log("memindahkan ke halaman reservasi...");
-  window.location.href = "reservasi.html";
-}
+        <!-- bagian kanan -->
+        <div class="split-right">
+            <div class="content">
+                <h1 style="margin-bottom: 20px;">Selamat Datang<br>di Hikepass!</h1>
+                <p>Register sekarang! untuk menikmati Semua<br>fitur yang tersedia di Hikepass.</p>
+            </div>
+        </div>
+    </div>
 
-const tombolReservasi = document.getElementsByClassName("btnReservasi")[0];
-if (tombolReservasi) {
-  tombolReservasi.addEventListener("click", pindahKeReservasi);
-}
+    <script src="script/login-script.js"></script>
+</body>
+
+</html>
