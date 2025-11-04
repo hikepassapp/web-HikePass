@@ -1,6 +1,8 @@
 // ========================================
-// PEMBAYARAN SCRIPT - NATIVE JSON VERSION
+// PEMBAYARAN SCRIPT - API VERSION
 // ========================================
+
+const API_BASE_URL = 'https://6906c98ab1879c890ed807e9.mockapi.io/api/tiketSaya';
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log('🚀 Initializing Pembayaran page...');
@@ -8,34 +10,46 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ========================================
-// HELPER FUNCTIONS - LOCAL STORAGE
+// HELPER FUNCTIONS - API
 // ========================================
 
-function getTicketsFromLocalStorage() {
-    const stored = localStorage.getItem('hikingTickets');
-    return stored ? JSON.parse(stored) : [];
-}
-
-function saveTicketsToLocalStorage(tickets) {
-    localStorage.setItem('hikingTickets', JSON.stringify(tickets));
-}
-
-function getTicketById(ticketId) {
-    const tickets = getTicketsFromLocalStorage();
-    return tickets.find(t => t.id === ticketId);
-}
-
-function updateTicketInStorage(ticketId, updates) {
-    const tickets = getTicketsFromLocalStorage();
-    const index = tickets.findIndex(t => t.id === ticketId);
-
-    if (index !== -1) {
-        tickets[index] = { ...tickets[index], ...updates, updatedAt: new Date().toISOString() };
-        saveTicketsToLocalStorage(tickets);
-        return tickets[index];
+async function getTicketById(ticketId) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/tiket/${ticketId}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching ticket:', error);
+        return null;
     }
+}
 
-    return null;
+async function updateTicketInAPI(ticketId, updates) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/tiket/${ticketId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                ...updates,
+                updatedAt: new Date().toISOString()
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const updatedTicket = await response.json();
+        console.log('✅ Ticket updated in API:', updatedTicket);
+        return updatedTicket;
+    } catch (error) {
+        console.error('❌ Error updating ticket:', error);
+        return null;
+    }
 }
 
 // ========================================
@@ -53,7 +67,7 @@ async function loadTicketDetail() {
     try {
         showLoading();
 
-        const ticket = getTicketById(ticketId);
+        const ticket = await getTicketById(ticketId);
 
         if (!ticket) {
             throw new Error('Tiket tidak ditemukan');
@@ -235,7 +249,7 @@ async function handleConfirmPayment(ticketId) {
         confirmBtn.disabled = true;
         confirmBtn.textContent = 'Memproses...';
 
-        const updatedTicket = updateTicketInStorage(ticketId, {
+        const updatedTicket = await updateTicketInAPI(ticketId, {
             paymentStatus: 'lunas'
         });
 
@@ -337,5 +351,5 @@ function formatPrice(price) {
     }).format(price);
 }
 
-console.log('%c💳 Pembayaran Page - LOADED (Native JSON)', 'font-size: 16px; font-weight: bold; color: #0c665c;');
-console.log('%cData Source: localStorage', 'font-weight: bold;');
+console.log('%c💳 Pembayaran Page - LOADED (API Version)', 'font-size: 16px; font-weight: bold; color: #0c665c;');
+console.log('%cData Source: MockAPI', 'font-weight: bold;');

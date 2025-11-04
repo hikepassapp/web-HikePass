@@ -1,6 +1,10 @@
+
+
 // ========================================
-// ISI DATA SCRIPT - GUNUNG SEMERU (NATIVE JSON)
+// ISI DATA SCRIPT - GUNUNG SEMERU (API VERSION)
 // ========================================
+
+const API_BASE_URL = 'https://6906c98ab1879c890ed807e9.mockapi.io/api/tiketSaya';
 
 document.addEventListener("DOMContentLoaded", () => {
     initInformasiPendakian();
@@ -188,7 +192,6 @@ function initKonfirmasiAturan() {
             const hargaPerTiket = 30000;
 
             const newTicket = {
-                id: generateTicketId(),
                 mountain: "Gunung Semeru",
                 image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
                 date: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }),
@@ -213,9 +216,10 @@ function initKonfirmasiAturan() {
 
             console.log('Data tiket baru:', newTicket);
 
-            saveTicketToLocalStorage(newTicket);
+            // Save to API
+            const savedTicket = await saveTicketToAPI(newTicket);
 
-            sessionStorage.setItem('tiketId', newTicket.id);
+            sessionStorage.setItem('tiketId', savedTicket.id);
 
             alert('Data berhasil disimpan! Lanjut ke tiket saya...');
             window.location.href = "tiket-saya.html";
@@ -231,24 +235,53 @@ function initKonfirmasiAturan() {
 }
 
 // ========================================
-// HELPER FUNCTIONS - LOCAL STORAGE
+// HELPER FUNCTIONS - API
 // ========================================
 
-function saveTicketToLocalStorage(ticket) {
-    let tickets = getTicketsFromLocalStorage();
-    tickets.push(ticket);
-    localStorage.setItem('hikingTickets', JSON.stringify(tickets));
-    console.log('✅ Tiket berhasil disimpan ke localStorage');
+async function saveTicketToAPI(ticket) {
+    try {
+        console.log('📤 Sending to API:', `${API_BASE_URL}/tiket`);
+        console.log('📦 Data:', ticket);
+
+        const response = await fetch(`${API_BASE_URL}/tiket`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(ticket)
+        });
+
+        console.log('📥 Response status:', response.status);
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('❌ API Error Response:', errorText);
+            throw new Error(`HTTP error! status: ${response.status} - ${errorText}`);
+        }
+
+        const savedTicket = await response.json();
+        console.log('✅ Tiket berhasil disimpan ke API:', savedTicket);
+        return savedTicket;
+    } catch (error) {
+        console.error('❌ Error saving ticket to API:', error);
+        throw error;
+    }
 }
 
-function getTicketsFromLocalStorage() {
-    const stored = localStorage.getItem('hikingTickets');
-    return stored ? JSON.parse(stored) : [];
-}
+async function getTicketsFromAPI() {
+    try {
+        const response = await fetch(`${API_BASE_URL}/tiket`);
 
-function generateTicketId() {
-    const timestamp = Date.now().toString().slice(-6);
-    return timestamp;
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const tickets = await response.json();
+        return tickets;
+    } catch (error) {
+        console.error('❌ Error fetching tickets from API:', error);
+        return [];
+    }
 }
 
 // ========================================
