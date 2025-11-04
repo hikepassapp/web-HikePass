@@ -6,6 +6,7 @@
     <title>Informasi - Hikepass</title>
     <link rel="stylesheet" href="css/navbar_pengelola.css" />
     <link rel="stylesheet" href="css/informasi.css" />
+    <link rel="stylesheet" href="css/modal-tambah-gunung.css" />
   </head>
   <body>
     <div id="navbar-placeholder"></div>
@@ -24,10 +25,10 @@
       <div class="hero-search-wrapper">
         <div class="search-bar">
           <img src="assets/iconSearch.svg" alt="Search" />
-          <input 
-            type="text" 
+          <input
+            type="text"
             id="searchInput"
-            placeholder="Cari nama gunung..." 
+            placeholder="Cari nama gunung..."
           />
         </div>
         <button class="btn-add" id="btnTambah">
@@ -39,13 +40,9 @@
 
     <!-- Konten List Gunung -->
     <main>
-      <section class="gunung-list" id="gununglList">
-        <!-- Data akan dimuat dari JavaScript -->
-      </section>
+      <section class="gunung-list" id="gununglList"></section>
     </main>
-
     <script src="script/load-navbar.js"></script>
-    <script src="script/navbar_pengelola.js"></script>
     <script src="script/informasi.js"></script>
   </body>
 </html>
