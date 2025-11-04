@@ -5,19 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Informasi - Hikepass</title>
     <link rel="stylesheet" href="css/navbar_pengelola.css" />
+    <link rel="stylesheet" href="css/informasi.css" />
+    <link rel="stylesheet" href="css/modal-tambah-gunung.css" />
   </head>
   <body>
-    <!-- Placeholder untuk navbar -->
     <div id="navbar-placeholder"></div>
 
-    <!-- Konten halaman -->
-    <main>
-      <h1>Halaman Informasi</h1>
-      <p>Konten di sini...</p>
-    </main>
+    <!-- Hero Section dengan Background Full -->
+    <section class="hero-section">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Informasi Pendakian Gunung</h1>
+        <p>Kelola data informasi pendakian gunung di Indonesia</p>
+      </div>
+    </section>
 
-    <!-- Load navbar -->
+    <!-- Search Container -->
+    <div class="search-container">
+      <div class="hero-search-wrapper">
+        <div class="search-bar">
+          <img src="assets/iconSearch.svg" alt="Search" />
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Cari nama gunung..."
+          />
+        </div>
+        <button class="btn-add" id="btnTambah">
+          <span>+</span>
+          Tambah Data Informasi
+        </button>
+      </div>
+    </div>
+
+    <!-- Konten List Gunung -->
+    <main>
+      <section class="gunung-list" id="gununglList"></section>
+    </main>
     <script src="script/load-navbar.js"></script>
-    <script src="script/navbar_pengelola.js"></script>
+    <script src="script/informasi.js"></script>
   </body>
 </html>
