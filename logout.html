@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logout</title>
+
+  <!-- modular css -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/component.css" />
+  <link rel="stylesheet" href="css/page-profile.css" />
+  <link rel="stylesheet" href="css/page-edit-profile.css" /> 
+</head>
+
+<body>
+  <!-- navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="assets/logoHikepass.svg" alt="Logo HikePass" />
+      <h2>HikePass</h2>
+    </div>
+
+    <nav class="navbar-menu">
+      <a href="home.html">Home</a>
+      <a href="reservasi.html">Reservasi</a>
+      <a href="tiket.html">Tiket Saya</a>
+    </nav>
+
+    <div class="logo">
+      <p id="greeting">Hai, Yanto</p>
+      <img src="assets/avatarUser.png" alt="User Avatar" class="avatar" id="goProfile" />
+    </div>
+  </header>
+
+  <!-- banner -->
+  <section class="banner-section">
+    <img src="assets/imgBackground.jpg" alt="Banner Profil" class="banner-img" />
+    <div class="profile-photo-container">
+      <div class="profile-circle">
+        <img src="assets/profile.png" alt="Foto Profil" class="profile-photo" />
+      </div>
+    </div>
+  </section>
+
+  <!-- konten logout -->
+  <section class="profile-info">
+    <div class="profile-card" style="text-align: center;">
+      <h2 style="margin-bottom: 25px; color: #0f4d3f;">Konfirmasi Logout</h2>
+
+      <p style="color: #555; font-size: 15px; margin-bottom: 40px;">
+        Anda yakin ingin keluar dari akun HikePass?<br>
+        Setelah logout, Anda harus login kembali untuk mengakses akun Anda.
+      </p>
+
+      <div class="form-buttons" style="justify-content: center; gap: 25px;">
+        <button id="cancelBtn" class="btn-cancel" style="width: 120px;">Batal</button>
+        <button id="logoutConfirmBtn" class="btn-save" style="width: 120px;">Keluar</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="script/logout-script.js"></script>
+</body>
+</html>
