@@ -21,7 +21,24 @@ const registerForm = document.getElementById("registerForm");
 // tombol sign in: masuk ke home/dashboard
 if (signinBtn) {
     signinBtn.addEventListener("click", () => {
-        window.location.href = "home.html"; // bisa ubah ke dashboard.html
+        const emailInput = document.querySelector('#signInForm input[type="email"]');
+        const passwordInput = document.querySelector('#signInForm input[type="password"]');
+        const email = emailInput.value.trim();
+        const password = passwordInput.value.trim();
+
+        // validasi sederhana
+        if (!email || !password) {
+            alert("Email dan password harus diisi!");
+            return;
+        }
+
+        // kondisi login sederhana
+        if (email === "dhea@gmail.com" && password === "dhea123") {
+            alert("Login berhasil! Selamat datang Admin.");
+            window.location.href = "home.html"; 
+        } else {
+            alert("Email atau password salah! Coba lagi.");
+        }
     });
 }
 
