@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HikePass - Profil</title>
+
+  <!-- Base Styles -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/component.css" />
+  <link rel="stylesheet" href="css/page-profile.css" />
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="assets/logoHikepass.svg" alt="Logo HikePass">
+      <h2>HikePass</h2>
+    </div>
+
+    <nav class="navbar-menu">
+      <a href="home.html">Home</a>
+      <a href="reservasi.html">Reservasi</a>
+      <a href="#">Tiket Saya</a>
+    </nav>
+
+    <div class="logo">
+      <p>Hai, Dhea</p>
+      <img src="assets/avatarUSer.png" alt="User Avatar">
+    </div>
+  </header>
+
+  <!-- BANNER -->
+  <section class="banner-section">
+    <img src="assets/imgBanner.jpg" alt="Banner" class="banner-img">
+
+    <!-- Foto Profil -->
+    <div class="profile-photo-container">
+      <img src="assets/profile.png" alt="Foto Profil" class="profile-photo">
+      <img src="assets/edit_foto.png" alt="Edit Foto" class="edit-photo-icon">
+    </div>
+  </section>
+
+  <!-- TAB MENU -->
+  <div class="profile-tabs">
+    <button class="tab active">Informasi Profile</button>
+    <button class="tab">Ubah Password</button>
+    <button class="tab">Pengaturan Privasi</button>
+  </div>
+
+  <!-- INFORMASI PROFILE -->
+  <section class="profile-info">
+    <div class="profile-card">
+      <div class="edit-icon">
+        <img src="assets/edit.png" alt="Edit Icon">
+      </div>
+
+      <div class="info-grid">
+        <div>
+          <p class="label">Username</p>
+          <p class="value">dheani209</p>
+        </div>
+
+        <div>
+          <p class="label">Nama Lengkap</p>
+          <p class="value">-</p>
+        </div>
+
+        <div>
+          <p class="label">Alamat</p>
+          <p class="value">-</p>
+        </div>
+
+        <div>
+          <p class="label">Email</p>
+          <p class="value">dhea@gmail.com</p>
+        </div>
+
+        <div>
+          <p class="label">Usia</p>
+          <p class="value">-</p>
+        </div>
+
+        <div>
+          <p class="label">NIK</p>
+          <p class="value">-</p>
+        </div>
+
+        <div>
+          <p class="label">Jenis Kelamin</p>
+          <div class="radio-group">
+            <label><input type="radio" name="gender"> Laki-laki</label>
+            <label><input type="radio" name="gender" checked> Perempuan</label>
+          </div>
+        </div>
+
+        <div>
+          <p class="label">No Telepon</p>
+          <p class="value">-</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="script/profile-script.js"></script>
+</body>
+
+</html>
