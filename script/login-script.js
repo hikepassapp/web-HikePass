@@ -1,14 +1,19 @@
-// toggle show hide password
-const togglePassword = document.getElementById('togglePassword');
-const passwordInput = document.getElementById('password');
+const admin = {
+    email: "admin@gmail.com",
+    password: "admin123"
+};
 
-if (togglePassword && passwordInput) {
-    togglePassword.addEventListener('click', () => {
-        const isPassword = passwordInput.type === 'password';
-        passwordInput.type = isPassword ? 'text' : 'password';
-        togglePassword.src = isPassword ? 'assets/show.svg' : 'assets/hide.svg';
+// toggle show hide password
+document.querySelectorAll(".toggle-password").forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+        const input = toggle.previousElementSibling; // input sebelum icon
+        const isPassword = input.type === "password";
+        
+        input.type = isPassword ? "text" : "password";
+        toggle.src = isPassword ? "assets/show.svg" : "assets/hide.svg";
     });
-}
+});
+
 
 // navigasi tombol login register
 const signinBtn = document.getElementById("signin-btn");
@@ -33,9 +38,9 @@ if (signinBtn) {
         }
 
         // kondisi login sederhana
-        if (email === "yanto@gmail.com" && password === "yanto123") {
+        if (email === admin.email && password === admin.password) {
             alert("Login berhasil! Selamat datang Admin.");
-            window.location.href = "home.html"; 
+            window.location.href = "home.html";
         } else {
             alert("Email atau password salah! Coba lagi.");
         }
