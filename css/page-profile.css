@@ -1,19 +1,19 @@
-/* ==== GLOBAL ==== */
+/* pengaturan global halaman */
 html,
 body {
   height: auto;
-  overflow-y: auto; /* biar halaman bisa di-scroll */
+  overflow-y: auto;
   background: linear-gradient(#f7f7f7, #ffffff);
   font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
 }
 
-/* ==== BANNER ==== */
+/* bagian banner */
 .banner-section {
   position: relative;
   width: 100%;
   height: 260px;
-  overflow: visible; /* biar foto profil bisa keluar area banner */
+  overflow: visible;
   z-index: 1;
 }
 
@@ -25,10 +25,10 @@ body {
   border-bottom: 2px solid #eee;
 }
 
-/* ==== FOTO PROFIL ==== */
+/* bagian foto profil */
 .profile-photo-container {
   position: absolute;
-  bottom: -70px; /* overlap lebih besar biar proporsional */
+  bottom: -70px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -45,22 +45,47 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
+/* ikon edit dengan lingkaran */
 .edit-photo-icon {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
-  width: 30px;
+  bottom: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #e8fff0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   z-index: 6;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* ==== TAB MENU ==== */
+.edit-photo-icon:hover {
+  transform: scale(1.05);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+.edit-photo-icon img {
+  width: 15px;
+  height: 15px;
+  opacity: 0.9;
+}
+
+/* tab menu profil */
+:root {
+  --brand-color: #0f4d3f;
+}
+
 .profile-tabs {
   margin-top: 100px;
   display: flex;
   justify-content: center;
   gap: 45px;
   border-bottom: 2px solid #e0e0e0;
+  position: relative;
 }
 
 .tab {
@@ -68,27 +93,39 @@ body {
   border: none;
   font-weight: 600;
   color: #888;
-  padding-bottom: 14px;
+  padding: 14px 6px;
   cursor: pointer;
   font-size: 16px;
-  transition: all 0.2s ease;
+  position: relative;
+  transition: all 0.25s ease;
 }
 
 .tab:hover {
-  color: #1d8348;
+  color: var(--brand-color);
 }
 
 .tab.active {
-  color: #1d8348;
-  border-bottom: 3px solid #1d8348;
+  color: var(--brand-color);
 }
 
-/* ==== CARD INFORMASI PROFIL ==== */
+/* garis bawah tab aktif */
+.tab.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 3px;
+  background: var(--brand-color);
+  border-radius: 0;
+}
+
+/* kartu informasi profil */
 .profile-info {
   display: flex;
   justify-content: center;
   margin-top: 50px;
-  margin-bottom: 100px; /* biar bawahnya bisa discroll */
+  margin-bottom: 100px;
   overflow-y: visible;
 }
 
@@ -97,13 +134,14 @@ body {
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 50px 60px;
-  width: 93%; /* diperluas biar card lebih besar */
-  max-width: 1250px; /* batas maksimal di layar besar */
+  width: 93%;
+  max-width: 1250px;
   position: relative;
-  min-height: 380px; /* biar tampak luas */
+  min-height: 380px;
   overflow: visible;
 }
 
+/* ikon edit profil */
 .edit-icon {
   position: absolute;
   top: 25px;
@@ -121,7 +159,7 @@ body {
   opacity: 0.8;
 }
 
-/* ==== GRID DATA ==== */
+/* pengaturan grid data profil */
 .info-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -136,7 +174,7 @@ body {
   justify-content: flex-start;
 }
 
-/* ==== TEKS LABEL & VALUE ==== */
+/* teks label dan isi data */
 .label {
   font-size: 14px;
   color: #757575;
@@ -145,14 +183,14 @@ body {
 }
 
 .value {
-  font-size: 15px;
+  font-size: 13.5px;
   color: #333;
   font-weight: 500;
   line-height: 1.6;
   word-break: break-word;
 }
 
-/* ==== RADIO GROUP ==== */
+/* grup radio untuk jenis kelamin */
 .radio-group {
   display: flex;
   align-items: center;
@@ -161,11 +199,17 @@ body {
 }
 
 .radio-group label {
-  font-size: 15px;
+  font-size: 13px;
   color: #333;
 }
 
-/* ==== RESPONSIVE ==== */
+.radio-group input[type="radio"] {
+  transform: scale(0.95);
+  margin-right: 4px;
+  accent-color: var(--brand-color);
+}
+
+/* pengaturan tampilan responsif */
 @media (max-width: 1024px) {
   .profile-card {
     width: 90%;
