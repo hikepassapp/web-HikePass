@@ -1,19 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HikePass - Profil</title>
+    <title>HikePass - Profil Pengelola</title>
 
     <!-- file css utama -->
     <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/component.css" />
     <link rel="stylesheet" href="css/page-profile.css" />
+    <link rel="stylesheet" href="css/navbar_pengelola.css" />
   </head>
 
   <body>
-    <div id="navbar-placeholder"></div>
+    <!-- navbar pengelola -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <!-- logo -->
+        <div class="navbar-logo">
+          <img
+            src="assets/logoHikepass.svg"
+            alt="Logo HikePass"
+            width="40"
+            height="40"
+          />
+          <span class="logo-text">HikePass</span>
+        </div>
+
+        <!-- menu -->
+        <div class="navbar-menu">
+          <a href="paket_wisata.html" class="nav-item" id="menuPaket">
+            <img src="assets/package.png" alt="Paket Wisata" width="20" height="20" />
+            <span>Paket Wisata</span>
+          </a>
+
+          <a href="informasi.html" class="nav-item" id="menuInformasi">
+            <img src="assets/info.png" alt="Informasi" width="20" height="20" />
+            <span>Informasi</span>
+          </a>
+
+          <a href="profile-pengelola.html" class="nav-item active" id="menuProfil">
+            <img src="assets/user_pengelola.png" alt="Profil" width="20" height="20" />
+            <span>Profil</span>
+          </a>
+        </div>
+      </div>
+    </nav>
 
     <!-- banner -->
     <section class="banner-section">
@@ -37,17 +69,15 @@
     <!-- tab menu -->
     <div class="profile-tabs">
       <button class="tab active" data-tab="tab-profile">
-        Informasi Profile
+        Informasi Profil
       </button>
-      <button class="tab" onclick="window.location.href='ubah-password.html'">
+      <button class="tab" onclick="window.location.href='ubah-password-pengelola.html'">
         Ubah Password
       </button>
-      <button class="tab" onclick="window.location.href='Logout.html'">
-        Logout
-      </button>
+      <button class="tab" id="logoutBtn">Logout</button>
     </div>
 
-    <!-- konten informasi profil -->
+    <!-- konten profil -->
     <section class="profile-info" id="tab-profile">
       <div class="profile-card">
         <div class="edit-icon" id="editProfileBtn">
@@ -107,7 +137,8 @@
       </div>
     </section>
 
-    <!-- script utama -->
+    <!-- script -->
+    <script src="script/navbar_pengelola.js"></script>
     <script src="script/profile-pengelola-script.js"></script>
   </body>
 </html>
