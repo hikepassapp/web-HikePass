@@ -1,0 +1,270 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  background: url('../assets/iHeader.png') center/cover no-repeat;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  padding-bottom: 80px;
+}
+
+/* Konten Hero di tengah */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  max-width: 900px;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  line-height: 1.2;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  opacity: 0.95;
+}
+.search-container {
+  position: relative;
+  max-width: 1200px;
+  margin: -60px auto 5px;; 
+  padding: 0 20px;
+  z-index: 10;
+}
+.hero-search-wrapper {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.search-bar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background: #f9f9f9;
+  transition: border-color 0.3s;
+}
+
+.search-bar:focus-within {
+  border-color: #2c5f4f;
+  background: white;
+}
+
+.search-bar img {
+  width: 22px;
+  height: 22px;
+  opacity: 0.5;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  outline: none;
+  color: #333;
+}
+
+.search-bar input::placeholder {
+  color: #999;
+}
+
+.btn-add {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: #093731;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(44, 95, 79, 0.3);
+}
+
+.btn-add:hover {
+  background: #1e4536;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(44, 95, 79, 0.4);
+}
+
+.btn-add:active {
+  transform: translateY(0);
+}
+
+.btn-add span {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Main Content Area */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 20px;
+}
+
+/* Grid List Gunung */
+.gunung-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 30px;
+}
+
+.gunung-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gunung-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.gunung-card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-content h3 {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-edit {
+  background: #3498db;
+  color: white;
+}
+
+.btn-edit:hover {
+  background: #2980b9;
+}
+
+.btn-hapus {
+  background: #e74c3c;
+  color: white;
+}
+
+.btn-hapus:hover {
+  background: #c0392b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+
+  .hero-search-wrapper {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .btn-add {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .gunung-list {
+    grid-template-columns: 1fr;
+  }
+
+  .search-bar {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-section {
+    height: 80vh;
+  }
+
+  .card-content {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .card-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
