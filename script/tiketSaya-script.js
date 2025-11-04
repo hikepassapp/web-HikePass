@@ -38,7 +38,6 @@ async function loadTicketsFromJSON() {
                 const jsonTickets = await response.json();
                 console.log('✅ JSON data loaded:', jsonTickets);
 
-                // Pastikan data valid
                 if (Array.isArray(jsonTickets) && jsonTickets.length > 0) {
                     allTickets = [...jsonTickets];
                     console.log('✅ Loaded from JSON file:', jsonTickets.length, 'tickets');

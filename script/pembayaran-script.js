@@ -179,21 +179,21 @@ function renderPaymentPage(ticket) {
 
                     <div class="payment-info">
                         <div class="info-item">
-                            <span class="info-icon">💳</span>
+                            <span class="info-icon"><img src="assets/iconWallet.svg" alt=""></span>
                             <div>
                                 <strong>Mendukung Semua E-Wallet</strong>
                                 <p>GoPay, OVO, Dana, LinkAja, ShopeePay, dll</p>
                             </div>
                         </div>
                         <div class="info-item">
-                            <span class="info-icon">⏱️</span>
+                            <span class="info-icon"><img src="assets/iconClock.svg" alt=""></span>
                             <div>
                                 <strong>Pembayaran Instan</strong>
                                 <p>Konfirmasi otomatis setelah pembayaran berhasil</p>
                             </div>
                         </div>
                         <div class="info-item">
-                            <span class="info-icon">🔒</span>
+                            <span class="info-icon"><img src="assets/iconLock.svg" alt=""></span>
                             <div>
                                 <strong>Aman & Terpercaya</strong>
                                 <p>Transaksi dilindungi enkripsi end-to-end</p>
@@ -204,7 +204,7 @@ function renderPaymentPage(ticket) {
 
                 <div class="payment-actions">
                     <button class="btn-back" onclick="handleBack()">
-                        ← Kembali
+                        Kembali
                     </button>
                     <button class="btn-confirm" onclick="handleConfirmPayment('${ticket.id}')">
                         Konfirmasi Pembayaran
