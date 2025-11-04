@@ -174,3 +174,31 @@ a {
 .close {
     float:right; font-size:22px; cursor:pointer;
 }
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding-bottom: 20px;
+}
+
+.logout-box {
+    padding: 10px 15px;
+}
+
+.logout-btn {
+    width: 100%;
+    padding: 10px;
+    background: #c0392b;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.logout-btn:hover {
+    background: #e74c3c;
+}

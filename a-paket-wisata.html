@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Paket Wisata</title>
+
+    <link rel="stylesheet" href="css/base-admin.css">
+    <link rel="stylesheet" href="css/admin-paket-wisata.css">
+</head>
+
+<div class="modal" id="addPaket">
+    <div class="modal-content">
+        <span class="close" id="closeModalPaket">&times;</span>
+        <h2>Tambah Paket Wisata</h2>
+
+        <form id="paketForm">
+            <div class="form-grid">
+
+                <!-- Left Column -->
+                <div class="form-col">
+                    <label>Judul</label>
+                    <input type="text" class="form-input">
+
+                    <label>Jenis Trip</label>
+                    <select class="form-input">
+                        <option>Open Trip</option>
+                        <option>Private Trip</option>
+                    </select>
+
+                    <label>Tanggal</label>
+                    <input type="date" class="form-input">
+
+                    <label>Biaya</label>
+                    <input type="text" placeholder="Rp..." class="form-input">
+                </div>
+
+                <!-- Right Column -->
+                <div class="form-col">
+                    <label>Titik Kumpul</label>
+                    <input type="text" class="form-input">
+
+                    <label>Jam Keberangkatan</label>
+                    <input type="time" class="form-input">
+
+                    <label>Narahubung</label>
+                    <input type="tel" placeholder="08xxxx" class="form-input">
+
+                    <label>Deskripsi</label>
+                    <textarea class="form-input" rows="4"></textarea>
+                </div>
+
+            </div>
+
+            <div class="btn-row">
+                <button class="btn-save" type="submit" id="btn-save">Simpan</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <nav>
+            <div class="logo">Hikepass Admin</div>
+            <a href="a-dashboard.html">Dashboard</a>
+            <a href="a-gunung.html">Data Gunung</a>
+            <a href="a-informasi.html">Informasi</a>
+            <a href="a-paket-wisata.html" class="active">Paket Wisata</a>
+            <a href="a-laporan.html">Laporan</a>
+            <a href="a-user.html">User</a>
+        </nav>
+
+        <div class="logout-box">
+            <button id="btnLogout" class="logout-btn">Logout</button>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main-content">
+        <section class="content-box">
+            <div class="content-header">
+                <h3>Data Paket Wisata</h3>
+                <button class="btn-add" id="btnAddPaket">+ Tambah Paket</button>
+            </div>
+
+            <div id="paketContainer" class="card-grid"></div>
+        </section>
+    </main>
+
+    <script src="script/admin-paket-wisata-script.js"></script>
+</body>
+
+</html>

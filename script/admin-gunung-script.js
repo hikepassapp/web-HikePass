@@ -31,12 +31,12 @@ const defaultData = {
     waktu: "2 Jam Estimasi Puncak",
     level: "Pemula",
     fasilitas: "Toilet, Parkir, Warung, Pos Registrasi",
-    image: "https://i.ibb.co/qBWnKNT/OPSI-3.jpg"
+    image: "assets/GunungCikuray.jpg"
 };
 
 // jika kosong set default
 if (dataGunung.length === 0) {
-    dataGunung = Array(8).fill(defaultData);
+    dataGunung = Array(4).fill(defaultData);
     localStorage.setItem("dataGunung", JSON.stringify(dataGunung));
 }
 
