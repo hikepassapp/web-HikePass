@@ -238,6 +238,8 @@
     padding: 15px;
     background: #f9f9f9;
     border-radius: 10px;
+    align-items: center;
+
 }
 
 .info-icon {
@@ -315,6 +317,17 @@
     background: #f9f9f9;
     border-left: 3px solid var(--primary);
     border-radius: 6px;
+}
+
+/* --- Footer --- */
+footer {
+    width: 100%;
+    background: #000;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+    font-size: 14px;
 }
 
 /* ========================================
@@ -404,6 +417,7 @@
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -414,6 +428,7 @@
         transform: translateY(30px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
