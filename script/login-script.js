@@ -10,13 +10,19 @@ if (togglePassword && passwordInput) {
   });
 }
 
-// navigasi tombol login dan register
+// ambil elemen utama
 const signinBtn = document.getElementById("signin-btn");
 const daftarBtn = document.getElementById("daftar-btn");
 const showRegister = document.getElementById("showRegister");
 const showLogin = document.getElementById("showLogin");
 const signInForm = document.getElementById("signInForm");
 const registerForm = document.getElementById("registerForm");
+
+// helper simpan user ke localstorage
+function simpanUserKeLocalStorage(data) {
+  localStorage.setItem("userData", JSON.stringify(data));
+  console.log("data user tersimpan:", data);
+}
 
 // tombol login
 if (signinBtn) {
@@ -33,22 +39,36 @@ if (signinBtn) {
 
     // login pendaki
     if (email === "yanto@gmail.com" && password === "yanto123") {
+      simpanUserKeLocalStorage({
+        role: "pendaki",
+        username: "yanto12344321",
+        nama: "Yanto",
+        email: "yanto@gmail.com",
+      });
       alert("Login berhasil! Selamat datang Pendaki.");
       window.location.href = "home.html";
+      return;
     }
+
     // login pengelola
-    else if (email === "thanos@gmail.com" && password === "thanos123") {
+    if (email === "thanos@gmail.com" && password === "thanos123") {
+      simpanUserKeLocalStorage({
+        role: "pengelola",
+        username: "thanos12344322",
+        nama: "Thanos",
+        email: "thanos@gmail.com",
+      });
       alert("Login berhasil! Selamat datang Pengelola.");
       window.location.href = "paket_wisata.html";
+      return;
     }
+
     // gagal login
-    else {
-      alert("Email atau password salah! Coba lagi.");
-    }
+    alert("Email atau password salah! Coba lagi.");
   });
 }
 
-// tombol daftar
+// tombol daftar (register)
 if (daftarBtn) {
   daftarBtn.addEventListener("click", () => {
     const nama = document.getElementById("namaLengkap").value.trim();
@@ -66,8 +86,33 @@ if (daftarBtn) {
       return;
     }
 
-    // deteksi role berdasarkan email
-    if (email.includes("pengelola") || email === "thanos@gmail.com") {
+    // kondisi khusus
+    if (nama === "Yanto" && email === "yanto@gmail.com" && password === "yanto123") {
+      simpanUserKeLocalStorage({
+        role: "pendaki",
+        username: "yanto12344321",
+        nama: "Yanto",
+        email: "yanto@gmail.com",
+      });
+      alert("Pendaftaran berhasil sebagai Pendaki!");
+      window.location.href = "home.html";
+      return;
+    }
+
+    if (nama === "Thanos" && email === "thanos@gmail.com" && password === "thanos123") {
+      simpanUserKeLocalStorage({
+        role: "pengelola",
+        username: "thanos12344322",
+        nama: "Thanos",
+        email: "thanos@gmail.com",
+      });
+      alert("Pendaftaran berhasil sebagai Pengelola!");
+      window.location.href = "paket_wisata.html";
+      return;
+    }
+
+    // default otomatis deteksi 
+    if (email.includes("pengelola")) {
       alert("Pendaftaran berhasil sebagai Pengelola!");
       window.location.href = "home-pengelola.html";
     } else {
@@ -90,7 +135,6 @@ if (showRegister && showLogin) {
   });
 }
 
-// tombol menu tambahan opsional
 const userBtn = document.getElementById("userBtn");
 const reservasiBtn = document.getElementById("reservasi-btn");
 const rsvSemeruBtn = document.getElementById("reservasi-semeru-btn");
@@ -115,7 +159,6 @@ if (rsvSemeruBtn) {
 
 // tombol menuju halaman reservasi
 function pindahKeReservasi() {
-  console.log("memindahkan ke halaman reservasi...");
   window.location.href = "reservasi.html";
 }
 
