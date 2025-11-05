@@ -39,7 +39,7 @@ if (signinBtn) {
     // login pengelola
     else if (email === "thanos@gmail.com" && password === "thanos123") {
       alert("Login berhasil! Selamat datang Pengelola.");
-      window.location.href = "home-pengelola.html";
+      window.location.href = "paket_wisata.html";
     }
     // gagal login
     else {
