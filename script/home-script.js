@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
         home: "home.html",
         reservasi: "reservasi.html",
         tiket: "tiket.html",
-        riwayat: "riwayat.html",
+        riwayat: "tiket-saya.html",
         informasi: "informasi.html",
         laporan: "laporan.html",
         profile: "profile.html"
