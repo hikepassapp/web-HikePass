@@ -24,6 +24,9 @@ function renderGunungs(data) {
   container.innerHTML = data.map(g => `
     <div class="gunung-card">
       <img src="${g.image}" alt="${g.nama}" onerror="this.src='assets/placeholder.jpg'" />
+      <div class="namagunung">
+        <h2>${g.nama}</h2>
+      </div>
       <div class="card-info">
         <div class="info-row">
           <span class="info-label">📋 Peraturan</span>
@@ -37,12 +40,9 @@ function renderGunungs(data) {
           <span class="info-label">ℹ️ Info Umum</span>
           <span class="info-text">${g.umum}</span>
         </div>
-      </div>
-      <div class="card-content">
-        <h3>${g.nama}</h3>
         <div class="card-actions">
-          <button class="btn btn-edit" onclick="editGunung(${g.id})">✏️ Edit</button>
-          <button class="btn btn-hapus" onclick="hapusGunung(${g.id})">🗑️ Hapus</button>
+          <button class="btn btn-edit" onclick="editGunung(${g.id})">Edit</button>
+          <button class="btn btn-hapus" onclick="hapusGunung(${g.id})">Hapus</button>
         </div>
       </div>
     </div>
@@ -100,15 +100,70 @@ function handleEditSubmit(event, id) {
   }
 }
 
+function createDeleteModal() {
+  // Hapus modal lama jika ada
+  const oldModal = document.getElementById('deleteModalOverlay');
+  if (oldModal) {
+    oldModal.remove();
+  }
+
+  const modalHTML = `
+    <div id="deleteModalOverlay" class="delete-modal-overlay">
+      <div class="delete-modal-content">
+        <h3>Anda yakin ingin menghapus?</h3>
+        <div class="delete-modal-buttons">
+          <button class="btn-batal" onclick="closeDeleteModal()">Batal</button>
+          <button class="btn-hapus-confirm" id="btnConfirmDelete">Hapus</button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+  const overlay = document.getElementById('deleteModalOverlay');
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      closeDeleteModal();
+    }
+  });
+}
+
 function hapusGunung(id) {
   const gunung = gunungs.find(g => g.id === id);
   if (!gunung) return;
+  createDeleteModal();
   
-  if (confirm(`Yakin ingin menghapus "${gunung.nama}"?`)) {
-    gunungs.splice(gunungs.findIndex(g => g.id === id), 1);
-    renderGunungs(gunungs);
+  const modal = document.getElementById('deleteModalOverlay');
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+
+  const btnConfirm = document.getElementById('btnConfirmDelete');
+  btnConfirm.onclick = () => {
+    const index = gunungs.findIndex(g => g.id === id);
+    if (index !== -1) {
+      gunungs.splice(index, 1);
+      renderGunungs(gunungs);
+    }
+    closeDeleteModal();
+  };
+}
+
+function closeDeleteModal() {
+  const modal = document.getElementById('deleteModalOverlay');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+      modal.remove();
+    }, 300);
   }
 }
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeDeleteModal();
+  }
+});
 
 function createModal() {
   fetch('modal-gunung.html')
