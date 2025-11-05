@@ -97,6 +97,8 @@ if (daftarBtn) {
       alert("Pendaftaran berhasil sebagai Pendaki!");
       window.location.href = "home.html";
       return;
+    }else{
+        alert("Pendaftaran gagal!");
     }
 
     if (nama === "Thanos" && email === "thanos@gmail.com" && password === "thanos123") {
