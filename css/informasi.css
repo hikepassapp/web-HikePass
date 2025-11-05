@@ -162,6 +162,7 @@ main {
   width: 100%;
   height: 280px;
   object-fit: cover;
+  display: block;
 }
 
 .card-content {
@@ -194,7 +195,33 @@ main {
   gap: 6px;
   transition: all 0.3s;
 }
+.card-info {
+  padding: 10px 20px;
+  background: #f9f9f9;
+}
 
+.info-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.info-row:last-child {
+  margin-bottom: 0;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #2c5f4f;
+  min-width: 120px;
+  flex-shrink: 0;
+}
+
+.info-text {
+  color: #666;
+  flex: 1;
+}
 .btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

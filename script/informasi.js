@@ -14,18 +14,9 @@ const gunungs = [
     peraturan: "Pendakian dibuka 24 jam...",
     tips: "Trek yang mudah untuk pemula...",
     umum: "Pemandangan kota Bandung..."
-  },
-  { 
-    id: 3, 
-    nama: "Gunung Cikuray", 
-    image: "assets/iCikuray.png",
-    peraturan: "Maksimal 100 pendaki per hari...",
-    tips: "Persiapan fisik yang baik...",
-    umum: "Gunung favorit di Garut..."
   }
 ];
 
-// Render gunung cards
 function renderGunungs(data) {
   const container = document.getElementById('gununglList');
   if (!container) return;
@@ -33,6 +24,20 @@ function renderGunungs(data) {
   container.innerHTML = data.map(g => `
     <div class="gunung-card">
       <img src="${g.image}" alt="${g.nama}" onerror="this.src='assets/placeholder.jpg'" />
+      <div class="card-info">
+        <div class="info-row">
+          <span class="info-label">📋 Peraturan</span>
+          <span class="info-text">${g.peraturan}</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">💡 Tips Mendaki</span>
+          <span class="info-text">${g.tips}</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">ℹ️ Info Umum</span>
+          <span class="info-text">${g.umum}</span>
+        </div>
+      </div>
       <div class="card-content">
         <h3>${g.nama}</h3>
         <div class="card-actions">
@@ -43,14 +48,58 @@ function renderGunungs(data) {
     </div>
   `).join('');
 }
-
-// Edit gunung
 function editGunung(id) {
   const gunung = gunungs.find(g => g.id === id);
-  if (gunung) alert(`Edit: ${gunung.nama}`);
+  if (!gunung) return;
+  openModal();
+  setTimeout(() => {
+    const modalTitle = document.querySelector('#modalOverlay h2');
+    if (modalTitle) {
+      modalTitle.textContent = 'Edit Data Informasi Gunung';
+    }
+    document.getElementById('namaGunung').value = gunung.nama;
+    document.getElementById('deskripsiPeraturan').value = gunung.peraturan;
+    document.getElementById('deskripsiTips').value = gunung.tips;
+    document.getElementById('deskripsiUmum').value = gunung.umum;
+    const preview = document.getElementById('imagePreview');
+    if (preview && gunung.image) {
+      preview.innerHTML = `<img src="${gunung.image}" style="max-width: 100%; max-height: 200px; margin-top: 10px; border-radius: 8px;" />`;
+    }
+    const submitBtn = document.querySelector('#formTambahGunung button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.textContent = 'Simpan Perubahan';
+      submitBtn.onclick = (e) => handleEditSubmit(e, id);
+    }
+  }, 100);
 }
 
-// Hapus gunung
+function handleEditSubmit(event, id) {
+  event.preventDefault();
+  
+  const index = gunungs.findIndex(g => g.id === id);
+  if (index === -1) return;
+  
+  const imageFile = document.getElementById('imageGunung').files[0];
+  const newImage = imageFile ? URL.createObjectURL(imageFile) : gunungs[index].image;
+  
+  gunungs[index] = {
+    id: id,
+    nama: document.getElementById('namaGunung').value,
+    peraturan: document.getElementById('deskripsiPeraturan').value,
+    tips: document.getElementById('deskripsiTips').value,
+    umum: document.getElementById('deskripsiUmum').value,
+    image: newImage
+  };
+  
+  renderGunungs(gunungs);
+  closeModal();
+  const submitBtn = document.querySelector('#formTambahGunung button[type="submit"]');
+  if (submitBtn) {
+    submitBtn.textContent = 'Tambah Gunung';
+    submitBtn.onclick = null;
+  }
+}
+
 function hapusGunung(id) {
   const gunung = gunungs.find(g => g.id === id);
   if (!gunung) return;
@@ -62,57 +111,20 @@ function hapusGunung(id) {
 }
 
 function createModal() {
-  const modal = document.createElement('div');
-  modal.id = 'modalOverlay';
-  modal.className = 'modal-overlay';
-  modal.innerHTML = `
-    <div class="modal-container">
-      <div class="modal-header">
-        <h2>Tambah Data Informasi Gunung</h2>
-        <button class="modal-close" onclick="closeModal()">&times;</button>
-      </div>
+  fetch('modal-gunung.html')
+    .then(response => response.text())
+    .then(html => {
+      const modal = document.createElement('div');
+      modal.id = 'modalOverlay';
+      modal.className = 'modal-overlay';
+      modal.innerHTML = html;
       
-      <form id="formTambahGunung" class="modal-form" onsubmit="handleSubmit(event)">
-        <div class="form-group">
-          <label>Nama Gunung <span class="required">*</span></label>
-          <input type="text" id="namaGunung" placeholder="Contoh: Gunung Semeru" required />
-        </div>
-
-        <div class="form-group">
-          <label>Deskripsi Peraturan <span class="required">*</span></label>
-          <textarea id="deskripsiPeraturan" rows="4" placeholder="Informasi detail tentang peraturan di gunung" required></textarea>
-        </div>
-
-        <div class="form-group">
-          <label>Deskripsi Tips Pendakian <span class="required">*</span></label>
-          <textarea id="deskripsiTips" rows="4" placeholder="Informasi detail tentang tips pendakian di gunung" required></textarea>
-        </div>
-
-        <div class="form-group">
-          <label>Deskripsi Umum Pendakian <span class="required">*</span></label>
-          <textarea id="deskripsiUmum" rows="4" placeholder="Informasi umum pendakian di gunung" required></textarea>
-        </div>
-
-        <div class="form-group">
-          <label>Upload Gambar Gunung <span class="required">*</span></label>
-          <input type="file" id="imageGunung" accept="image/*" required onchange="previewImage(event)" />
-          <div id="imagePreview"></div>
-        </div>
-
-        <div class="form-actions">
-          <button type="button" class="btn btn-cancel" onclick="closeModal()">Batal</button>
-          <button type="submit" class="btn btn-submit">Simpan Data</button>
-        </div>
-      </form>
-    </div>
-  `;
-  
-  document.body.appendChild(modal);
-  
-  // Close on overlay click
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
-  });
+      document.body.appendChild(modal);
+      
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+    });
 }
 
 function openModal() {
@@ -132,6 +144,17 @@ function closeModal() {
     document.body.style.overflow = '';
     document.getElementById('formTambahGunung').reset();
     document.getElementById('imagePreview').innerHTML = '';
+    
+    const modalTitle = document.querySelector('#modalOverlay h2');
+    if (modalTitle) {
+      modalTitle.textContent = 'Tambah Data Informasi Gunung';
+    }
+    
+    const submitBtn = document.querySelector('#formTambahGunung button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.textContent = 'Tambah Gunung';
+      submitBtn.onclick = null;
+    }
   }
 }
 
@@ -163,16 +186,11 @@ function handleSubmit(event) {
   gunungs.push(formData);
   renderGunungs(gunungs);
   closeModal();
-  
-  alert(`✅ Data "${formData.nama}" berhasil ditambahkan!`);
 }
-
-// ============ INITIALIZATION ============
 
 function initInformasi() {
   renderGunungs(gunungs);
 
-  // Search
   const searchInput = document.getElementById('searchInput');
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
@@ -183,19 +201,16 @@ function initInformasi() {
     });
   }
   
-  // Button tambah
   const btnTambah = document.getElementById('btnTambah');
   if (btnTambah) {
     btnTambah.addEventListener('click', openModal);
   }
   
-  // ESC key to close modal
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeModal();
   });
 }
 
-// Run
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initInformasi);
 } else {

@@ -1,0 +1,69 @@
+<div class="modal-container">
+  <div class="modal-header">
+    <h2>Tambah Data Informasi Gunung</h2>
+    <button type="button" class="modal-close" onclick="closeModal()">
+      &times;
+    </button>
+  </div>
+
+  <form id="formTambahGunung" class="modal-form" onsubmit="handleSubmit(event)">
+    <div class="form-group">
+      <label>Nama Gunung <span class="required">*</span></label>
+      <input
+        type="text"
+        id="namaGunung"
+        placeholder="Contoh: Gunung Semeru"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Deskripsi Peraturan <span class="required">*</span></label>
+      <textarea
+        id="deskripsiPeraturan"
+        rows="4"
+        placeholder="Informasi detail tentang peraturan di gunung"
+        required
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Deskripsi Tips Pendakian <span class="required">*</span></label>
+      <textarea
+        id="deskripsiTips"
+        rows="4"
+        placeholder="Informasi detail tentang tips pendakian di gunung"
+        required
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Deskripsi Umum Pendakian <span class="required">*</span></label>
+      <textarea
+        id="deskripsiUmum"
+        rows="4"
+        placeholder="Informasi umum pendakian di gunung"
+        required
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Upload Gambar Gunung <span class="required">*</span></label>
+      <input
+        type="file"
+        id="imageGunung"
+        accept="image/*"
+        required
+        onchange="previewImage(event)"
+      />
+      <div id="imagePreview"></div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn btn-cancel" onclick="closeModal()">
+        Batal
+      </button>
+      <button type="submit" class="btn btn-submit">Simpan Data</button>
+    </div>
+  </form>
+</div>
